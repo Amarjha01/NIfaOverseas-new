@@ -1,6 +1,5 @@
 import Header from "./components/Header"
 import Footer from "./components/Footer";
-import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import ImageGallery from "./components/ImageGallery";
 import './App.css'
