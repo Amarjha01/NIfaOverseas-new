@@ -61,7 +61,7 @@ const Header = () => {
     </div>
       </div>
 
-      <div className="lg:bg-blue-400 w-full flex justify-between items-center ">
+      <div className="lg:bg-blue-400 w-full flex justify-between items-center mb-60 ">
         {/* Navigation Menu */}
         <ul className="lg:flex flex-1 justify-center space-x-4 text-white font-medium sm:hidden">
           <li className="hover:text-yellow-500 rounded py-3 px-3">
