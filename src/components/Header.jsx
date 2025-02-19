@@ -1,148 +1,122 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa6";
-import { FaYoutube } from "react-icons/fa6";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaLinkedinIn } from "react-icons/fa";
-import { FaPinterestP } from "react-icons/fa6";
-import './components.css'
+import { FaBars, FaTimes } from "react-icons/fa"; // Toggle Icons
+import { FaInstagram, FaFacebookF, FaYoutube, FaXTwitter, FaLinkedinIn, FaPinterestP } from "react-icons/fa6";
+import { motion, AnimatePresence } from "framer-motion"; // Animation
+import Home from "./Home";
+import Events from "./Events";
+import Contact from "./Contact";
+import "./components.css";
+
+const MENU_ITEMS = ["Home", "Events", "Contact"];
+
 const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
+  const [activeComponent, setActiveComponent] = useState("Home");
 
-  const handleToggleOpen = () => {
-    setIsToggleOpen(!isToggleOpen);
+  const handleToggleOpen = () => setIsToggleOpen(!isToggleOpen);
+  const handleMenuClick = (item) => {
+    setActiveComponent(item);
+    setIsToggleOpen(false);
+  };
+
+  const SOCIAL_LINKS = [
+  { Icon: FaInstagram, link: "https://www.instagram.com" },
+  { Icon: FaFacebookF, link: "https://www.facebook.com" },
+  { Icon: FaYoutube, link: "https://www.youtube.com" },
+  { Icon: FaXTwitter, link: "https://twitter.com" },
+  { Icon: FaLinkedinIn, link: "https://www.linkedin.com" },
+  { Icon: FaPinterestP, link: "https://www.pinterest.com" }
+];
+
+
+    const handleNavigation = (component) => {
+    setActiveComponent(component);
+    setIsToggleOpen(false); // Close mobile menu on selection
+  };
+
+  
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case "Events": return <Events />;
+      case "Contact": return <Contact />;
+      default: return <Home />;
+    }
   };
 
   return (
     <header className="w-full">
+      {/* Logo and Social Links */}
+      <div className="px-20 flex items-center justify-between">
+        <img
+          src="https://res.cloudinary.com/dbnticsz8/image/upload/v1738726832/febTech/Nifa/vutjx29bo0yr4lbtnijl.png"
+          alt="Logo"
+          className="h-28 cursor-pointer"
+          onClick={() => handleNavigation(<Home />)} // Logo Click to Home
+          
+        />
 
-      
-      {/* Logo */}
-      <div className="px-20 flex">
-        <Link to="/">
-          <img
-            src="https://res.cloudinary.com/dbnticsz8/image/upload/v1738726832/febTech/Nifa/vutjx29bo0yr4lbtnijl.png"
-            alt="Logo"
-            className="h-28"
-          />
-        </Link>
-        <div className="flex ml-auto mt-18 space-x-2 text-l">
-      {/* Instagram */}
-      <Link to="https://www.instagram.com" target="_blank" className="transform transition-all duration-300 hover:scale-135">
-        <FaInstagram />
-      </Link>
+        {/* Social Icons */}
+        <div className="space-x-3 text-lg px-8 absolute right-5 top-20 hidden md:flex">
+          {SOCIAL_LINKS.map(({ Icon, link }, index) => (
+            <a key={index} href={link} target="_blank" rel="noopener noreferrer" className="hover:scale-125 transition">
+              <Icon className="text-xl" />
+            </a>
+          ))}
+        </div>
 
-      {/* Facebook */}
-      <Link to="https://www.facebook.com" target="_blank" className="transform transition-all duration-300 hover:scale-135">
-        <FaFacebookF />
-      </Link>
-
-      {/* YouTube */}
-      <Link to="https://www.youtube.com" target="_blank" className="transform transition-all duration-300 hover:scale-135">
-        <FaYoutube />
-      </Link>
-
-      {/* X/Twitter */}
-      <Link to="https://twitter.com" target="_blank" className="transform transition-all duration-300 hover:scale-135">
-        <FaXTwitter />
-      </Link>
-
-      {/* LinkedIn */}
-      <Link to="https://www.linkedin.com" target="_blank" className="transform transition-all duration-300 hover:scale-135">
-        <FaLinkedinIn />
-      </Link>
-
-      {/* Pinterest */}
-      <Link to="https://www.pinterest.com" target="_blank" className="transform transition-all duration-300 hover:scale-135">
-        <FaPinterestP />
-      </Link>
-    </div>
+        {/* Toggle Button for Mobile View */}
+        <button className="lg:hidden md:hidden text-2xl focus:outline-none pr-3" onClick={handleToggleOpen}>
+          {isToggleOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </div>
 
-      <div className="lg:bg-blue-400 w-full flex justify-between items-center mb-60 ">
-        {/* Navigation Menu */}
-        <ul className="lg:flex flex-1 justify-center space-x-4 text-white font-medium sm:hidden">
-          <li className="hover:text-yellow-500 rounded py-3 px-3">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="hover:text-yellow-500 rounded py-3 px-3">
-            <Link to="/About">About Us</Link>
-          </li>
-          <li className="hover:text-yellow-500 rounded py-3 px-3">
-            <Link to="/Visitors">Visitors</Link>
-          </li>
-          <li className="hover:text-yellow-500 rounded py-3 px-3">
-            <Link to="/Exhibitors">Exhibitors</Link>
-          </li>
-          <li className="hover:text-yellow-500 rounded py-3 px-3">
-            <Link to="/Products">Products</Link>
-          </li>
-          <li className="hover:text-yellow-500 rounded py-3 px-3">
-            <Link to="/Press">Press-&-Media</Link>
-          </li>
-          <li className="hover:text-yellow-500 rounded py-3 px-3">
-            <Link to="/Events">Events</Link>
-          </li>
-          <li className="hover:text-yellow-500 rounded py-3 px-3">
-            <Link to="/Register">Register To visit</Link>
-          </li>
-          <li className="hover:text-yellow-500 rounded py-3 px-3">
-            <Link to="/Contact">Contact Us</Link>
-          </li>
+      {/* Desktop Navigation Menu */}
+      <nav className="hidden md:flex lg:flex justify-center bg-blue-400 text-white">
+        <ul className="flex space-x-1 text-l font-medium">
+          {MENU_ITEMS.map((item) => (
+            <li
+              key={item}
+              className={`px-4 py-3 hover:text-black cursor-pointer ${
+                activeComponent === item ? "bg-yellow-500 text-black" : ""
+              }`}
+              onClick={() => handleMenuClick(item)}
+            >
+              {item}
+            </li>
+          ))}
         </ul>
+      </nav>
 
-        {/* Mobile Menu Button */}
-        
-
-        
-
-        
-      </div> 
-      <div className="absolute top-28  flex justify-end w-full">
-          <button
-            className="lg:hidden text-lack text-2xl focus:outline-none pr-3"
-            onClick={handleToggleOpen}
+      {/* Mobile Navigation Menu with Animation */}
+      <AnimatePresence>
+        {isToggleOpen && (
+          <motion.ul
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-28 w-full bg-blue-400 text-white flex flex-col items-center lg:hidden"
           >
-            <FaBars />
-        </button>
-        {/* Mobile Dropdown Menu */}
-<ul
-  className={`absolute top-6 w-full bg-blue-400 text-white flex flex-col items-center transition-all duration-500 ease-in-out transform ${
-    isToggleOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-  } lg:hidden`}
->
-  <li className="hover:text-yellow-500 rounded py-3 px-3">
-    <Link to="/">Home</Link>
-  </li>
-  <li className="hover:text-yellow-500 rounded py-3 px-3">
-    <Link to="/About">About Us</Link>
-  </li>
-  <li className="hover:text-yellow-500 rounded py-3 px-3">
-    <Link to="/Visitors">Visitors</Link>
-  </li>
-  <li className="hover:text-yellow-500 rounded py-3 px-3">
-    <Link to="/Exhibitors">Exhibitors</Link>
-  </li>
-  <li className="hover:text-yellow-500 rounded py-3 px-3">
-    <Link to="/Products">Products</Link>
-  </li>
-  <li className="hover:text-yellow-500 rounded py-3 px-3">
-    <Link to="/Press">Press-&-Media</Link>
-  </li>
-  <li className="hover:text-yellow-500 rounded py-3 px-3">
-    <Link to="/Events">Events</Link>
-  </li>
-  <li className="hover:text-yellow-500 rounded py-3 px-3">
-    <Link to="/Register">Register To visit</Link>
-  </li>
-  <li className="hover:text-yellow-500 rounded py-3 px-3">
-    <Link to="/Contact">Contact Us</Link>
-  </li>
-</ul>
+            {MENU_ITEMS.map((item, index) => (
+              <motion.li
+                key={item}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className={`py-3 px-3 w-full text-center hover:text-yellow-500 cursor-pointer ${
+                  activeComponent === item ? "bg-yellow-500 text-black" : ""
+                }`}
+                onClick={() => handleMenuClick(item)}
+              >
+                {item}
+              </motion.li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
 
-        </div>
+      {/* Render Active Component */}
+      <div className="mt-4 p-5">{renderComponent()}</div>
     </header>
   );
 };

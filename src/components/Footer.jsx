@@ -14,7 +14,7 @@ import { FaUser } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className=' md:h-fit lg:h-fit h-full w-full   md:fixed md:bottom-0  lg:fixed lg:bottom-0  pt-5  text-white  '>
+    <div className=' md:h-fit lg:h-fit h-full w-full md:relative md:bottom-0  lg:relative lg:bottom-0  pt-5  text-white  '>
         {/* first footer part */}
 <div className=' bg-[#927bbd] w-[100vw] flex justify-center'>
 <div className='max-w-[1600px] flex md:justify-around  lg:flex-row md:flex-row flex-col  w-full items-center '>
