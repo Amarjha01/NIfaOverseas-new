@@ -8,7 +8,7 @@ import About from "./components/About";
 import ContactForm from "./components/ContactForm";
 const App = () => {
   return (
-    <div className="flex flex-col items-center overflow-x-hidden ">
+    <div className="flex flex-col items-center overflow-x-hidden scroll-smooth ">
       <Header />
       <HeroSection />
       <Stats />
