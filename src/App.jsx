@@ -7,7 +7,7 @@ import Stats from "./components/Stats";
 import About from "./components/About";
 const App = () => {
   return (
-    <div className="flex flex-col items-center overflow-x-hidden ">
+    <div className="flex flex-col items-center overflow-x-hidden scroll-smooth ">
       <Header />
       <HeroSection />
       <Stats />

@@ -18,8 +18,8 @@ const images = [
 
 const ImageGallery = () => {
   return (
-    <div className="w-full h-auto flex justify-center">
-      <div className="w-5/6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-4 py-4 ">
+    <div className="w-full h-auto flex justify-center" id='gallery'>
+      <div className="w-8/10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-4 py-4 ">
         {images.map((img, index) => (
           <img
             key={index}

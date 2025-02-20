@@ -39,7 +39,7 @@ const statsData = [
 
 const Stats = () => {
   return (
-    <div className="h-auto w-full py-2">
+    <div className="h-auto w-full py-2" id='stats'>
       <ul className="grid grid-cols-4 text-center gap-3 mx-1.5">
         {statsData.map((stat, index) => (
           <li key={index} className="bg-amber-600 py-5">
