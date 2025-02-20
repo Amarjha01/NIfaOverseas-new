@@ -4,7 +4,7 @@ import { FaInstagram, FaFacebookF, FaYoutube, FaXTwitter, FaLinkedinIn, FaPinter
 import { motion, AnimatePresence } from "framer-motion"; // Animation
 import Home from "./Home";
 import Events from "./Events";
-import Contact from "./Contact";
+import ContactForm from "./ContactForm";
 import "./components.css";
 
 const MENU_ITEMS = ["Home", "Events", "Contact"];
@@ -38,7 +38,7 @@ const Header = () => {
   const renderComponent = () => {
     switch (activeComponent) {
       case "Events": return <Events />;
-      case "Contact": return <Contact />;
+      case "Contact": return <ContactForm />;
       default: return <Home />;
     }
   };
