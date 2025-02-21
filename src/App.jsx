@@ -14,8 +14,8 @@ const App = () => {
       <Stats />
       <About />
       <ImageGallery />
-      <Footer />
       <ContactForm/>
+      <Footer />
     </div>
   );
 };

@@ -1,86 +1,131 @@
-import axios from "axios";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(null);
-  
+  const FORM_ACTION_URL =
+    "https://docs.google.com/forms/d/e/1FAIpQLSf_s6geyB6DBgcBNdoQQHAYM1rmjqlZJx_BuoO3Jo1gPeUEGA/formResponse";
+
+  const ENTRY_NAME = "entry.1058671458";
+  const ENTRY_EMAIL = "entry.1647953686";
+  const ENTRY_PHONE = "entry.402076056";
+
+  const [formData, setFormData] = useState({
+    [ENTRY_NAME]: "",
+    [ENTRY_EMAIL]: "",
+    [ENTRY_PHONE]: "",
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setSuccess(null);
+
+    // Convert form data to URL query string
+    const formDataEncoded = new URLSearchParams(formData).toString();
+    const requestUrl = `${FORM_ACTION_URL}?${formDataEncoded}`;
 
     try {
-      const response = await axios.post(
-        "https://script.google.com/macros/s/AKfycbwk0xP98FK3Xio-81iKGVVxT3lca1vPJYQeC_rprEEe-ZD_diQO9gYmu5iMgoZFhnEH/exec",
-        formData,
-        { headers: { "Content-Type": "application/json" } }
-      );
-      setSuccess(response.data.message);
-      setFormData({ name: "", email: "", message: "" });
+      await fetch(requestUrl, {
+        method: "GET", // Google Forms only accepts GET requests
+        mode: "no-cors", // Prevents CORS issues
+      });
+
+      // Show success alert
+      alert("Form submitted successfully!");
+
+      // Reset form after submission
+      setFormData({
+        [ENTRY_NAME]: "",
+        [ENTRY_EMAIL]: "",
+        [ENTRY_PHONE]: "",
+      });
+
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 3000); // Hide notification after 3 seconds
     } catch (error) {
-      console.error("Error submitting form:", error);
-      setSuccess("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
+      console.error("Form submission error:", error);
     }
   };
 
   return (
-    <div className="max-w-lg mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Contact Us</h2>
-      
-      {success && (
-        <div className="p-3 text-center rounded-md mb-4 
-          {success.includes('successfully') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
-          {success}
+    <div className="relative w-full flex flex-col items-center justify-center py-10 bg-gray-200">
+      <div className="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        {/* Background image */}
+        <div className="relative z-10 flex flex-col items-center text-center mb-12">
+          <p className="text-3xl sm:text-4xl font-semibold text-gray-700">
+            Get in <span className="text-orange-600">touch</span>
+          </p>
+          <div className="h-1 w-40 bg-orange-600 my-4"></div>
+          <p className="text-sm sm:text-lg text-gray-500 max-w-2xl mx-auto">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
         </div>
-      )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input 
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Your Name"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
+        {/* Form Section */}
+        <div className="flex justify-center w-full">
+          <div className="w-full sm:w-10/12 md:w-8/12 lg:w-6/12 xl:w-4/12">
+            <form onSubmit={handleSubmit} className="bg-white p-6 sm:p-8 rounded-lg shadow-lg space-y-6">
+              {/* Name & Email Fields */}
+              <div className="flex flex-wrap gap-4 sm:gap-6">
+                <input
+                  className="w-full lg:w-full sm:w-1/2 p-4 border-gray-300 rounded-md bg-gray-50"
+                  type="text"
+                  name={ENTRY_NAME}
+                  placeholder="Name"
+                  value={formData[ENTRY_NAME]}
+                  onChange={handleChange}
+                  required
+                />
+                {/* <input
+                  className="w-full lg:w-full sm:w-1/2 p-4 border-gray-300 rounded-md bg-gray-50"
+                  type="text"
+                  name="LastName"
+                  placeholder="Last Name"
+                /> */}
+              </div>
+              <div className="flex flex-wrap gap-4 sm:gap-6">
+                <input
+                  className="w-full lg:w-full sm:w-1/2 p-4 border-gray-300 rounded-md bg-gray-50"
+                  type="email"
+                  name={ENTRY_EMAIL}
+                  placeholder="Email Address"
+                  value={formData[ENTRY_EMAIL]}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  className="w-full lg:w-full sm:w-1/2 p-4 border-gray-300 rounded-md bg-gray-50"
+                  type="tel"
+                  name={ENTRY_PHONE}
+                  placeholder="Phone Number"
+                  value={formData[ENTRY_PHONE]}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Your Email"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        />
+              {/* Message */}
+              {/* <textarea
+                className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
+                name="Message"
+                placeholder="Message"
+                rows="4"
+              ></textarea> */}
 
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Your Message"
-          rows="4"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        ></textarea>
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200"
-        >
-          {loading ? "Submitting..." : "Send Message"}
-        </button>
-      </form>
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full py-3 bg-orange-600 text-white rounded-md font-semibold text-lg hover:bg-orange-500 transition"
+              >
+                Send
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
