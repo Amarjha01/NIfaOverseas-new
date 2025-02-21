@@ -51,7 +51,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div id="contact" className="relative w-full flex flex-col items-center justify-center py-10 bg-gray-200">
+    <div className="relative w-full flex flex-col items-center justify-center py-10 bg-gray-200">
       <div className="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
         {/* Background image */}
         <div className="relative z-10 flex flex-col items-center text-center mb-12">
@@ -79,6 +79,12 @@ const ContactForm = () => {
                   onChange={handleChange}
                   required
                 />
+                {/* <input
+                  className="w-full lg:w-full sm:w-1/2 p-4 border-gray-300 rounded-md bg-gray-50"
+                  type="text"
+                  name="LastName"
+                  placeholder="Last Name"
+                /> */}
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-6">
                 <input
@@ -100,6 +106,14 @@ const ContactForm = () => {
                   required
                 />
               </div>
+
+              {/* Message */}
+              {/* <textarea
+                className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
+                name="Message"
+                placeholder="Message"
+                rows="4"
+              ></textarea> */}
 
               {/* Submit Button */}
               <button
