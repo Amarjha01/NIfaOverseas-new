@@ -5,6 +5,7 @@ import ImageGallery from "./components/ImageGallery";
 import './App.css'
 import Stats from "./components/Stats";
 import About from "./components/About";
+import ContactForm from "./components/ContactForm";
 const App = () => {
   return (
     <div className="flex flex-col items-center overflow-x-hidden scroll-smooth ">
@@ -13,6 +14,7 @@ const App = () => {
       <Stats />
       <About />
       <ImageGallery />
+      <ContactForm/>
       <Footer />
     </div>
   );
