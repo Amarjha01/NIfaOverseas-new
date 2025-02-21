@@ -27,7 +27,6 @@ const Header = () => {
       });
     }
   };
-  
 
   const SOCIAL_LINKS = [
     { Icon: FaInstagram, link: "https://www.instagram.com" },
