@@ -1,19 +1,17 @@
-import React from 'react';
 
-// Image data (you can move this to a separate file like galleryData.js)
 const images = [
-  'https://plus.unsplash.com/premium_photo-1679809447923-b3250fb2a0ce?w=600&auto=format&fit=crop&q=60',
-  'https://plus.unsplash.com/premium_photo-1679811675652-2302bf23c9f2?w=600&auto=format&fit=crop&q=60',
-  'https://images.unsplash.com/photo-1608793733118-ee3f16002251?w=600&auto=format&fit=crop&q=60',
-  'https://images.unsplash.com/photo-1557687790-902ede7ab58c?w=600&auto=format&fit=crop&q=60',
-  'https://plus.unsplash.com/premium_photo-1679811671226-9181616d7570?w=600&auto=format&fit=crop&q=60',
-  'https://plus.unsplash.com/premium_photo-1679811674659-21be3cc25946?w=600&auto=format&fit=crop&q=60',
-  'https://images.unsplash.com/photo-1589051088132-06f36a22012a?w=600&auto=format&fit=crop&q=60',
-  'https://images.unsplash.com/photo-1620619767323-b95a89183081?w=600&auto=format&fit=crop&q=60',
-  'https://images.unsplash.com/photo-1619280605593-721b24d8914b?w=600&auto=format&fit=crop&q=60',
-  'https://images.unsplash.com/photo-1589395595558-18e333cf6341?w=600&auto=format&fit=crop&q=60',
-  'https://images.unsplash.com/photo-1589051095874-5caef81e6243?w=600&auto=format&fit=crop&q=60',
-  'https://images.unsplash.com/photo-1638192808899-b5e65e1dca97?q=80&w=2075&auto=format&fit=crop',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132033/pyxxjrxfd72rgwytn7as.jpg',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132025/gfcvzxoqghtaltovscp1.jpg',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132024/r0j40aommth8sj6h4ibx.jpg',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132023/kae92swwd1dedawgajk2.jpg',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132023/ldzcizpxykzpi2klpxwj.jpg',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132022/e1lw3ostvee1efttpr1f.jpg',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132022/i8tiuzrxecnr3iv7kh1z.jpg',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132021/j3fxgvhqonhm7war5nkz.jpg',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132021/b630tkpmwxbwmuqcfdlm.jpg',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132021/y16kykgfkreujcjdjiyg.jpg',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132020/oserbfqc5mwrrz3oq6n6.jpg',
+  'https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740132022/rsmhvaydobjuneqyc56u.jpg',
 ];
 
 const ImageGallery = () => {
