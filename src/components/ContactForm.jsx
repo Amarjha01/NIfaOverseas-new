@@ -1,6 +1,45 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
 
 const ContactForm = () => {
+const contact = useRef();
+const text1 = useRef()
+const text2 = useRef()
+
+useGSAP(()=>{
+  gsap.from(text1.current,{
+    y:-50,
+    x:-50,
+    opacity:0,
+    
+    duration:5,
+    scrollTrigger:{
+      trigger:text1.current,
+      // markers:true,
+      start: "top 90%",
+      // end:"bottom 100%",      
+      scrub: true,
+    }
+  })
+  gsap.from(text2.current,{
+    y:-50,
+    x:50,
+    opacity:0,
+    
+    duration:5,
+    scrollTrigger:{
+      trigger:text2.current,
+      // markers:true,
+      start: "top 90%",
+      // end:"bottom 100%",      
+      scrub: true,
+    }
+  })
+})
+
   const FORM_ACTION_URL =
     "https://docs.google.com/forms/d/e/1FAIpQLSf_s6geyB6DBgcBNdoQQHAYM1rmjqlZJx_BuoO3Jo1gPeUEGA/formResponse";
 
@@ -51,16 +90,16 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="relative w-full flex flex-col items-center justify-center py-10 bg-gray-200">
-      <div className="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <div id="contact" className="relative w-full flex flex-col items-center justify-center py-10 bg-gray-200 mt-10">
+      <div className="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 mt-5">
         {/* Background image */}
         <div className="relative z-10 flex flex-col items-center text-center mb-12">
-          <p className="text-3xl sm:text-4xl font-semibold text-gray-700">
-            Get in <span className="text-orange-600">touch</span>
-          </p>
+          <div  className="text-3xl sm:text-4xl font-semibold text-gray-700 flex space-x-1.5">
+            <p ref={text1}>Get in</p> <span className="text-orange-600" ref={text2}>touch</span>
+          </div>
           <div className="h-1 w-40 bg-orange-600 my-4"></div>
           <p className="text-sm sm:text-lg text-gray-500 max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          "Connect with us to explore authentic, handcrafted treasures that blend tradition with modern artistry. Let’s bring heritage to your space with timeless craftsmanship!"
           </p>
         </div>
 

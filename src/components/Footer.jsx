@@ -12,9 +12,52 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 
+// GSAP
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+import { useRef } from "react";
+ 
+
+
+
+
+
 const Footer = () => {
+  const footer = useRef();
+  const hLine1 = useRef();
+  const hLine2 = useRef();
+  useGSAP(() => {
+    gsap.from(hLine1.current, {
+      width: 0,
+      duration: 3,
+      scrollTrigger: {
+        trigger: hLine1.current,
+        start: "top 90%",
+        // end: "top 30%",
+        // markers: true, // Should show scroll markers
+        // scrub: true,
+      },
+    });
+    gsap.from(hLine2.current, {
+      width: 0,
+      duration: 3,
+      scrollTrigger: {
+        trigger: hLine2.current,
+        start: "top 90%",
+        // end: "top 30%",
+        // markers: true, // Should show scroll markers
+        // scrub: true,
+      },
+    });
+  }, []);
+  
+  
   return (
-    <div className=" md:h-fit lg:h-fit h-full w-full   md:relative md:bottom-0  lg:relative lg:bottom-0  pt-5  text-white  ">
+    <div ref={footer} className=" md:h-fit lg:h-fit h-full w-full   md:relative md:bottom-0  lg:relative lg:bottom-0  pt-5  text-white  ">
       {/* first footer part */}
       <div className=" bg-[#927bbd] w-[100vw] flex justify-center">
         <div className="max-w-[1600px] flex md:justify-around  lg:flex-row md:flex-row flex-col  w-full items-center ">
@@ -32,11 +75,8 @@ const Footer = () => {
                 <p>Nifa Overseas Pvt. Ltd.</p>
               </div>
             </div>
-            <div className="max-w-xs w-64">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias id
-              nemo, aliquid provident unde repellendus cupiditate numquam, fuga
-              commodi tempore quaerat ducimus voluptas, ullam saepe! Lorem ipsum
-              dolor sit amet consectetur, adipisicing elit. Illo, cupiditate?
+            <div className="max-w-xs w-64 text-xl">
+            Bringing heritage to life with authentic handcrafted treasures! We specialize in antique handicrafts, crafted by skilled artisans with 100% originality and sustainable practices. Explore our globally loved collection and add a touch of tradition to your space
             </div>
           </div>
 
@@ -44,7 +84,7 @@ const Footer = () => {
           <div className="flex flex-col space-y-5 w-64 items-start py-9">
             <div className="px-5">
               <span className=" text-white font-bold">Get In Touch</span>
-              <div className="h-1 w-20 bg-white"></div>
+              <div ref={hLine1} className="h-1 w-20 bg-white"></div>
             </div>
             <div className="">
               <div className=" flex p-1">
@@ -110,7 +150,7 @@ const Footer = () => {
           <div className="flex flex-col space-y-5 w-64 items-start py-9">
             <div className="px-5">
               <span className=" text-white font-bold">Fair Info</span>
-              <div className="h-1 w-14 bg-white"></div>
+              <div ref={hLine2} className="h-1 w-14 bg-white"></div>
             </div>
             <div className="">
               <div className=" flex p-1">
