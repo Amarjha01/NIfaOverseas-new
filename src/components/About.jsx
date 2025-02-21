@@ -19,7 +19,7 @@ const About = () => {
         start: "top 80%", // Adjust trigger position
         end: "bottom 50%",
         scrub: 1, // Smooth effect
-        markers: true, // Debugging (remove in production)
+        // markers: true, // Debugging (remove in production)
       },
     });
 
