@@ -43,7 +43,6 @@ const Header = () => {
       });
     }
   };
-  
 
   return (
     <header id="home" className="w-full left-0 z-50 bg-white shadow-md scroll-smooth">
