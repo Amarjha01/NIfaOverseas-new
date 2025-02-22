@@ -45,7 +45,7 @@ const Header = () => {
   };
 
   return (
-    <header id="home" className="w-full left-0 z-50 bg-white shadow-md scroll-smooth">
+    <header id="home" className="w-full left-0 z-10 bg-white shadow-md scroll-smooth">
       {/* Logo & Social Links - Hidden on Scroll */}
      <div>
      <div className={`bgimg px-6 md:px-20 flex items-center justify-between h-20 transition-transform duration-300 ${isScrolled ? "-translate-y-full" : "translate-y-0"}`}>

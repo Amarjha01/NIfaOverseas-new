@@ -29,7 +29,7 @@ const ImageGallery = () => {
       gsap.set(img, { scale: 1 });
 
       img.addEventListener("mouseenter", () => {
-        gsap.to(img, { scale: 1.05, duration: 0.3, ease: "power2.out" });
+        gsap.to(img, { scale: 1.5, duration: 0.3, ease: "power2.out" });
       });
 
       img.addEventListener("mouseleave", () => {
@@ -47,7 +47,7 @@ const ImageGallery = () => {
 
   return (
     <div className="w-full h-auto flex justify-center" id="gallery">
-      <div className="w-8/10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-4 py-4 mt-15">
+      <div className="w-8/10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-4 mt-15">
         {images.map((img, index) => (
           <img
             key={index}
@@ -55,7 +55,7 @@ const ImageGallery = () => {
             src={img}
             alt={`Image ${index + 1}`}
             loading="lazy"
-            className="w-full h-40 object-cover rounded-lg shadow-lg aspect-[3/2] cursor-pointer"
+            className="w-full h-72 drop-shadow-lg object-cover rounded-lg shadow-lg aspect-square cursor-pointer"
           />
         ))}
       </div>

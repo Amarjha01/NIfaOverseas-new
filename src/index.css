@@ -3,3 +3,7 @@
 html{
     scroll-behavior: smooth;
 }
+/* body {
+    height: 100%;
+    overflow-y: hidden;
+ } */
