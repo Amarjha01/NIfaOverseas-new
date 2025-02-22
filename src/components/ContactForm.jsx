@@ -41,16 +41,18 @@ useGSAP(()=>{
 })
 
   const FORM_ACTION_URL =
-    "https://docs.google.com/forms/d/e/1FAIpQLSf_s6geyB6DBgcBNdoQQHAYM1rmjqlZJx_BuoO3Jo1gPeUEGA/formResponse";
+    "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdpT_KmkFm2M1ThSkEG81oUihZGk68mLkWLCPeZ0_OKzyVkPw/formResponse";
 
-  const ENTRY_NAME = "entry.1058671458";
-  const ENTRY_EMAIL = "entry.1647953686";
-  const ENTRY_PHONE = "entry.402076056";
+  const ENTRY_NAME = "entry.1263211320";
+  const ENTRY_EMAIL = "entry.17202855";
+  const ENTRY_PHONE = "entry.204990205";
+  const ENTRY_MESSAGE = "entry.567167231"; // Unique entry for message field (use the correct entry ID from your Google Form)
 
   const [formData, setFormData] = useState({
     [ENTRY_NAME]: "",
     [ENTRY_EMAIL]: "",
     [ENTRY_PHONE]: "",
+    [ENTRY_MESSAGE]: "", // Add message field to the state
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -80,6 +82,7 @@ useGSAP(()=>{
         [ENTRY_NAME]: "",
         [ENTRY_EMAIL]: "",
         [ENTRY_PHONE]: "",
+        [ENTRY_MESSAGE]: "", // Reset message field
       });
 
       setSubmitted(true);
@@ -118,12 +121,6 @@ useGSAP(()=>{
                   onChange={handleChange}
                   required
                 />
-                {/* <input
-                  className="w-full lg:w-full sm:w-1/2 p-4 border-gray-300 rounded-md bg-gray-50"
-                  type="text"
-                  name="LastName"
-                  placeholder="Last Name"
-                /> */}
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-6">
                 <input
@@ -146,13 +143,18 @@ useGSAP(()=>{
                 />
               </div>
 
-              {/* Message */}
-              {/* <textarea
-                className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
-                name="Message"
-                placeholder="Message"
-                rows="4"
-              ></textarea> */}
+              {/* Message Section */}
+              <div>
+                <textarea
+                  className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
+                  name={ENTRY_MESSAGE}
+                  placeholder="Your Message"
+                  value={formData[ENTRY_MESSAGE]}
+                  onChange={handleChange}
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
 
               {/* Submit Button */}
               <button
@@ -170,3 +172,4 @@ useGSAP(()=>{
 };
 
 export default ContactForm;
+
