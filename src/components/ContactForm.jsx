@@ -93,16 +93,16 @@ useGSAP(()=>{
   };
 
   return (
-    <div id="contact" className="relative w-full flex flex-col items-center justify-center py-10 bg-gray-200 mt-10">
+    <div id="Contact" className=" relative w-full flex flex-col items-center justify-center py-10 bg-gray-200 mt-10">
       <div className="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 mt-5">
         {/* Background image */}
-        <div className="relative z-10 flex flex-col items-center text-center mb-12">
+        <div className="relative flex flex-col items-center text-center mb-12">
           <div  className="text-3xl sm:text-4xl font-semibold text-gray-700 flex space-x-1.5">
             <p ref={text1}>Get in</p> <span className="text-orange-600" ref={text2}>touch</span>
           </div>
           <div className="h-1 w-40 bg-orange-600 my-4"></div>
           <p className="text-sm sm:text-lg text-gray-500 max-w-2xl mx-auto">
-          "Connect with us to explore authentic, handcrafted treasures that blend tradition with modern artistry. Let’s bring heritage to your space with timeless craftsmanship!"
+          Connect with us to explore authentic, handcrafted treasures that blend tradition with modern artistry. Let’s bring heritage to your space with timeless craftsmanship!
           </p>
         </div>
 
@@ -113,7 +113,7 @@ useGSAP(()=>{
               {/* Name & Email Fields */}
               <div className="flex flex-wrap gap-4 sm:gap-6">
                 <input
-                  className="w-full lg:w-full sm:w-1/2 p-4 border-gray-300 rounded-md bg-gray-50"
+                  className="w-full lg:w-full p-4 border-gray-300 rounded-md bg-gray-50"
                   type="text"
                   name={ENTRY_NAME}
                   placeholder="Name"
@@ -124,7 +124,7 @@ useGSAP(()=>{
               </div>
               <div className="flex flex-wrap gap-4 sm:gap-6">
                 <input
-                  className="w-full lg:w-full sm:w-1/2 p-4 border-gray-300 rounded-md bg-gray-50"
+                  className="w-full lg:w-full p-4 border-gray-300 rounded-md bg-gray-50"
                   type="email"
                   name={ENTRY_EMAIL}
                   placeholder="Email Address"
@@ -133,7 +133,7 @@ useGSAP(()=>{
                   required
                 />
                 <input
-                  className="w-full lg:w-full sm:w-1/2 p-4 border-gray-300 rounded-md bg-gray-50"
+                  className="w-full lg:w-full p-4 border-gray-300 rounded-md bg-gray-50"
                   type="tel"
                   name={ENTRY_PHONE}
                   placeholder="Phone Number"
@@ -159,7 +159,7 @@ useGSAP(()=>{
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full py-3 bg-orange-600 text-white rounded-md font-semibold text-lg hover:bg-orange-500 transition"
+                className="w-full py-3 bg-orange-600 text-white rounded-md font-semibold text-lg hover:bg-orange-500 transition cursor-pointer"
               >
                 Send
               </button>
@@ -172,4 +172,3 @@ useGSAP(()=>{
 };
 
 export default ContactForm;
-

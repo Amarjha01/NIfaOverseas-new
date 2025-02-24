@@ -50,13 +50,13 @@ const About = () => {
   }, [textRef1, textRef2, textRef3]); // Ensures GSAP runs on ref changes
 
   return (
-    <div className="flex mx-auto w-full justify-center" id="about">
+    <div className="flex mx-auto w-full justify-center" id="About">
       <div className="w-8/10 flex justify-between items-center">
         <div className="md:w-2/4 w-full text-xl">
-          <span ref={textRef1} className="font-bold text-4xl overflow-hidden">
+          <span ref={textRef1} className="font-bold text-4xl overflow-hidden text-gray-700">
             About Us
           </span>
-          <p ref={textRef2} className="py-3.5 overflow-hidden">
+          <p ref={textRef2} className="py-3.5 overflow-hidden ">
             At NIFA OVERSEAS, we bring timeless craftsmanship to the world! Since 2020, we’ve been empowering small artisans to create 100% original, antique handicrafts that blend tradition with modern design. Every piece we offer is not just a product—it’s a story of skill, heritage, and sustainability.
           </p>
           <p className="overflow-hidden" ref={textRef3}>

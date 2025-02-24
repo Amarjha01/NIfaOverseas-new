@@ -65,7 +65,7 @@ const Footer = () => {
         <div className="max-w-[1600px] flex md:justify-around  lg:flex-row md:flex-row flex-col  w-full items-center ">
           {/* first footer part1 */}
 
-          <div className=" flex flex-col w-[50%] space-y-3 py-9 ">
+          <div className=" flex flex-col w-[70%] md:w-[50%] space-y-3 py-9 ">
             <div className=" flex items-center space-x-3">
               <img
                 src="https://res.cloudinary.com/dbnticsz8/image/upload/v1738726832/febTech/Nifa/vutjx29bo0yr4lbtnijl.png"
@@ -109,7 +109,8 @@ const Footer = () => {
                 </span>
                 <div className=" flex flex-col">
                   <span className=" font-bold ">Call Us:</span>
-                  <a href="tel:91+9199569397" className="hover:text-blue-400">+91 9199569397</a>
+                  <a href="tel:91+9199569397" className="hover:text-blue-400">+91 8266043623</a>
+                  <a href="tel:91+9199569397" className="hover:text-blue-400">+91 8057109969</a>
                 </div>
               </div>
             </div>
