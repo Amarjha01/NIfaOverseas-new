@@ -4,7 +4,7 @@ const HeroSection = () => {
   return (
     
       <video className="w-full   " autoPlay muted loop playsInline>
-        <source src="https://ihgfdelhifair.in/video/PROMO-IHGF-DELHI-FAIR-Video-Pre-Autumn-24.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dbnticsz8/video/upload/v1740397074/febTech/Nifa/d1juzbq7tvlcozpas7mc.mp4" type="video/mp4" />
       </video>
     
   );
