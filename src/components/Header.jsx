@@ -1,13 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import {
-  FaInstagram,
-  FaFacebookF,
-  FaYoutube,
-  FaXTwitter,
-  FaLinkedinIn,
-  FaPinterestP,
-} from "react-icons/fa6";
+import { FaPinterestP } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
 import "./components.css";
 
@@ -16,11 +9,14 @@ const MENU_ITEMS = ["Home", "Stats", "About", "Gallery", "Contact"];
 const Header = () => {
   const headerRef1 = useRef();
   const headerRef2 = useRef();
+  const mobileMenuRef = useRef(); // Reference for mobile menu
   const [isToggleOpen, setIsToggleOpen] = useState(false);
   const [activeComponent, setActiveComponent] = useState("Home");
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const handleToggleOpen = () => setIsToggleOpen(!isToggleOpen);
+  const handleToggleOpen = () => {
+    setIsToggleOpen(!isToggleOpen); // Toggle the menu on click
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +33,7 @@ const Header = () => {
 
   const handleMenuClick = (item) => {
     setActiveComponent(item);
-    setIsToggleOpen(false);
+    setIsToggleOpen(false); // Close the menu when an item is clicked
     handleScrollToSection(item);
   };
 
@@ -56,6 +52,21 @@ const Header = () => {
     }
   };
 
+  // Handle click outside of the mobile menu to close it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        setIsToggleOpen(false); // Close the mobile menu if clicked outside
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <header
       id="Home"
@@ -65,7 +76,7 @@ const Header = () => {
         {/* part 1 for both mobile and desktop */}
         <div
           ref={headerRef1}
-          className={` bgimg px-6 md:px-20 flex items-center justify-between h-20 transition-transform duration-300 ${
+          className={`bgimg px-6 md:px-20 flex items-center justify-between h-20 transition-transform duration-300 ${
             isScrolled ? "-translate-y-4" : "translate-y-0"
           }`}
         >
@@ -82,28 +93,25 @@ const Header = () => {
             ))}
           </div>
         </div>
+
         {/* part 2 for mobile view */}
         <div
-        
-          className={`md:hidden h-16 w-full  flex items-center justify-between px-2  ${
+          className={`md:hidden h-16 w-full flex items-center justify-between px-2 ${
             isScrolled ? "fixed top-0" : " "
-          }
-          ${
-            isScrolled ? " backdrop-blur-2xl" : "bg-gray-900 "
-          }
-          `}
+          } ${isScrolled ? "backdrop-blur-2xl" : "bg-gray-900"}`}
         >
           {isScrolled && (
-        <img
-        
-          src="https://res.cloudinary.com/dbnticsz8/image/upload/v1738726832/febTech/Nifa/vutjx29bo0yr4lbtnijl.png"
-          alt="Logo"
-          className="w-32"
-        />
-      )}
+            <img
+              src="https://res.cloudinary.com/dbnticsz8/image/upload/v1738726832/febTech/Nifa/vutjx29bo0yr4lbtnijl.png"
+              alt="Logo"
+              className="w-32"
+            />
+          )}
           <button
-            className={`md:hidden text-2xl focus:outline-none cursor-pointer  pr-4 z-20 ${isScrolled ? "text-black" : "text-white"}`}
-            onClick={handleToggleOpen}
+            className={`md:hidden text-2xl focus:outline-none cursor-pointer pr-4 z-20 ${
+              isScrolled ? "text-black" : "text-white"
+            }`}
+            onClick={handleToggleOpen} // Toggle button to open/close the menu
           >
             {isToggleOpen ? <FaTimes /> : <FaBars />}
           </button>
@@ -112,18 +120,18 @@ const Header = () => {
         {/* part 2 for desktop view */}
         <nav
           ref={headerRef2}
-          className={`hidden md:flex justify-center   w-full backdrop-blur-xl ${
+          className={`hidden md:flex justify-center w-full backdrop-blur-xl ${
             isScrolled ? "fixed top-0" : "flex"
-          } ${isScrolled ? "bg-transparent" : "bg-gray-900"}
-          ${isScrolled ? " text-black" : "text-white"}
-          `}
+          } ${isScrolled ? "bg-transparent" : "bg-gray-900"} ${
+            isScrolled ? "text-black" : "text-white"
+          }`}
         >
           <ul className="flex space-x-2 text-lg font-medium">
             {MENU_ITEMS.map((item) => (
               <li
                 key={item}
                 tabIndex="0"
-                className={`px-4 py-3  transition outline-none focus-visible:ring-2 focus-visible:ring-orange-800 ${
+                className={`px-4 py-3 transition outline-none focus-visible:ring-2 focus-visible:ring-orange-800 ${
                   activeComponent === item
                     ? "bg-yellow-500 text-black"
                     : "hover:bg-orange-400 hover:text-black"
@@ -150,13 +158,14 @@ const Header = () => {
       <AnimatePresence>
         {isToggleOpen && (
           <motion.nav
-            initial={{ opacity: 0, y: -20 }}
+            ref={mobileMenuRef} // Attach the ref to the mobile menu
+            initial={{ opacity: 0, y: "100%" }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className={` fixed  w-full bg-blue-500 text-white flex flex-col items-center md:hidden py-4  ${
-            isScrolled ? "-translate-y-4" : "translate-y-0"
-          }`}
+            exit={{ opacity: 0, y: "100%" }}
+            transition={{ duration: 0.5 }}
+            className={`fixed w-full bg-gray-400 text-gray-900 flex flex-col items-center md:hidden py-4 ${
+              isScrolled ? "-translate-y-4" : "translate-y-0"
+            }`}
           >
             {MENU_ITEMS.map((item, index) => (
               <motion.div
