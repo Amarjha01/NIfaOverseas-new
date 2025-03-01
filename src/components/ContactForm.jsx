@@ -93,7 +93,7 @@ useGSAP(()=>{
   };
 
   return (
-    <div id="Contact" className=" relative w-full flex flex-col items-center justify-center py-10 bg-gray-200 mt-10">
+    <div id="Contact Us" className=" relative w-full flex flex-col items-center justify-center py-10 bg-gray-200 mt-10">
       <div className="w-full max-w-screen-xl px-4 sm:px-6 lg:px-8 mt-5">
         {/* Background image */}
         <div className="relative flex flex-col items-center text-center mb-12">

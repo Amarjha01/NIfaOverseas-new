@@ -50,7 +50,7 @@ const About = () => {
   }, [textRef1, textRef2, textRef3]); // Ensures GSAP runs on ref changes
 
   return (
-    <div className="flex mx-auto w-full justify-center" id="About">
+    <div className="flex mx-auto w-full justify-center mt-10" id="About Us">
       <div className="w-8/10 flex justify-between items-center">
         <div className="md:w-2/4 w-full text-xl">
           <span ref={textRef1} className="font-bold text-4xl overflow-hidden text-gray-700">

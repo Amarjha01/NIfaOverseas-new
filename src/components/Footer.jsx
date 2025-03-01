@@ -77,7 +77,7 @@ const Footer = () => {
                 <p>Nifa Overseas Pvt. Ltd.</p>
               </div>
             </div>
-            <div className=" md:w-[80%] w-full text-xl">
+            <div className=" md:w-[80%] w-full text-md">
             Bringing heritage to life with authentic handcrafted treasures! We specialize in antique handicrafts, crafted by skilled artisans with 100% originality and sustainable practices. Explore our globally loved collection and add a touch of tradition to your space
             </div>
           </div>
@@ -148,7 +148,7 @@ const Footer = () => {
                   <FaPinterestP />
                 </span>
               </div>
-              <p className=" ">Follow US On Pintrest</p>
+              <p className=" ">Follow US On Pinterest</p>
             </div>
           </div>
 
@@ -210,7 +210,7 @@ const Footer = () => {
 
       {/* second footer part */}
       <div className="bg-gray-900 h-fit w-full ">
-        <div className=" w-full flex justify-center gap-5 py-2">
+        <div className=" w-full flex justify-center gap-3 py-2 text-sm">
           <a href="#">Sitemap</a>
           <a href="#">Disclaimer</a>
           <a href="#">Privacy Policy</a>

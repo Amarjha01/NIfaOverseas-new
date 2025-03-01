@@ -8,7 +8,7 @@ const statsData = [
   { number: 50, label: "Countries" },
 ];
 
-const Stats = () => {
+const Statistics = () => {
   const numberRefs = useRef([]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Stats = () => {
   }, []);
 
   return (
-    <div className="h-auto w-full py-2" id="Stats">
+    <div className="h-auto w-full py-2" id="Statistics">
       <ul className="grid grid-cols-4 text-center gap-3 mx-1.5">
         {statsData.map((stat, index) => (
           <li key={index} className="bg-amber-600 py-5">
@@ -45,4 +45,4 @@ const Stats = () => {
   );
 };
 
-export default Stats;
+export default Statistics;

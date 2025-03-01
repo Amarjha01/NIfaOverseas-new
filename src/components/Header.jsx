@@ -4,7 +4,7 @@ import { FaPinterestP } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
 import "./components.css";
 
-const MENU_ITEMS = ["Home", "Stats", "About", "Gallery", "Contact"];
+const MENU_ITEMS = ["Home", "Statistics", "About Us", "Gallery", "Contact Us"];
 
 const Header = () => {
   const headerRef1 = useRef();
@@ -24,7 +24,7 @@ const Header = () => {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
-      }
+      } 
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -83,7 +83,7 @@ const Header = () => {
           <img
             src="https://res.cloudinary.com/dbnticsz8/image/upload/v1738726832/febTech/Nifa/vutjx29bo0yr4lbtnijl.png"
             alt="Logo"
-            className="h-16 md:h-24 cursor-pointer"
+            className="h-16 md:h-36 cursor-pointer"
           />
           <div className="md:flex space-x-3 text-lg">
             {[FaPinterestP].map((Icon, index) => (
