@@ -81,7 +81,7 @@ const Header = () => {
           }`}
         >
           <img
-            src="https://res.cloudinary.com/dbnticsz8/image/upload/v1738726832/febTech/Nifa/vutjx29bo0yr4lbtnijl.png"
+            src="https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067893/Nifa%20Overseas/ggwlzpvdrfmjeozs28w9.png"
             alt="Logo"
             className="h-16 md:h-36 cursor-pointer"
           />
