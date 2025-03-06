@@ -3,7 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { FaPinterestP } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
 import "./components.css";
-
+import iso from '../assets/iso9001.png'
 const MENU_ITEMS = ["Home", "Statistics", "About Us", "Gallery", "Contact Us"];
 
 const Header = () => {
@@ -76,16 +76,31 @@ const Header = () => {
         {/* part 1 for both mobile and desktop */}
         <div
           ref={headerRef1}
-          className={`bgimg px-6 md:px-20 flex items-center justify-between h-20 transition-transform duration-300 ${
+          className={`bgimg px-6 md:px-20 flex items-center  h-20 transition-transform duration-300 gap-3 ${
             isScrolled ? "-translate-y-4" : "translate-y-0"
           }`}
         >
           <img
             src="https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067893/Nifa%20Overseas/ggwlzpvdrfmjeozs28w9.png"
             alt="Logo"
-            className="h-16 md:h-36 cursor-pointer"
+            className="h-32 md:h-40 cursor-pointer"
           />
-          <div className="md:flex space-x-3 text-lg">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb5walsWNAAqh12c69MrsDJMmiWhLDsow6gw&s"
+            alt="MCA-Logo"
+            className="h-5 lg:h-8 cursor-pointer"
+          />
+          <img
+            src="https://ihgfdelhifair.in/assets/img/epch-logo-2024.png"
+            alt="EPCH-Logo"
+            className="h-5 lg:h-8 cursor-pointer"
+          />
+          <img
+            src={iso}
+            alt="ECC-ISO"
+            className="h-5 lg:h-8 cursor-pointer"
+          />
+          <div className="flex space-x-3 text-lg grow  justify-end ">
             {[FaPinterestP].map((Icon, index) => (
               <a key={index} href="#" className="hover:scale-125 transition">
                 <Icon className="text-xl" />
