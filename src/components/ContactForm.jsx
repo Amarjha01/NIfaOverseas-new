@@ -4,7 +4,6 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import axios from "axios";
 
-// Register ScrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 const ContactForm = () => {
@@ -16,19 +15,18 @@ const ContactForm = () => {
       y: -50,
       x: -50,
       opacity: 0,
-      duration: 1.5,
+      duration: 5,
       scrollTrigger: {
         trigger: text1.current,
         start: "top 90%",
         scrub: true,
       },
     });
-
     gsap.from(text2.current, {
       y: -50,
       x: 50,
       opacity: 0,
-      duration: 1.5,
+      duration: 5,
       scrollTrigger: {
         trigger: text2.current,
         start: "top 90%",
@@ -37,91 +35,89 @@ const ContactForm = () => {
     });
   });
 
-  // Google Form action URL and entry IDs
-  const FORM_ACTION_URL =
-    "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdpT_KmkFm2M1ThSkEG81oUihZGk68mLkWLCPeZ0_OKzyVkPw/formResponse";
+  const FORM_ACTION_URL ="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdpT_KmkFm2M1ThSkEG81oUihZGk68mLkWLCPeZ0_OKzyVkPw/formResponse";
 
-  const ENTRY_NAME = "entry.1263211320";
-  const ENTRY_EMAIL = "entry.17202855";
-  const ENTRY_PHONE = "entry.204990205";
-  const ENTRY_MESSAGE = "entry.567167231";
-  const ENTRY_FILE = "entry.216404056"; // Google Form entry for file URL
+const ENTRY_NAME = "entry.1263211320";
+const ENTRY_EMAIL = "entry.17202855";
+const ENTRY_PHONE = "entry.204990205";
+const ENTRY_MESSAGE = "entry.567167231";
+const ENTRY_FILE_URL = "entry.216404056"; // Replace with actual entry ID for file URL
 
   const [formData, setFormData] = useState({
     [ENTRY_NAME]: "",
     [ENTRY_EMAIL]: "",
     [ENTRY_PHONE]: "",
     [ENTRY_MESSAGE]: "",
+    [ENTRY_FILE_URL]: "", 
   });
-
-  const [file, setFile] = useState(null);
-  const [fileUrl, setFileUrl] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   // Handle input field changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  // Handle file selection
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  // Upload file to Cloudinary
-  const uploadFileToCloudinary = async () => {
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
     if (!file) {
-      alert("Please select a file first.");
-      return null;
+      console.log("No file selected.");
+      return;
     }
-
+  
+    setUploading(true);
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "nifa_upload"); // Replace with your Cloudinary preset
-
+    formData.append("upload_preset", "nifaOverseas"); 
+    formData.append("resource_type", "raw"); // Ensure the file is uploaded as raw
+  
     try {
-      const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dvlh2e6d0/upload",
-        formData
-      );
-      setFileUrl(response.data.secure_url);
-      return response.data.secure_url;
+      console.log("Starting file upload...");
+      const response = await fetch("https://api.cloudinary.com/v1_1/dbnticsz8/upload", {
+        method: "POST",
+        body: formData,
+      });
+    
+      const data = await response.json();
+      console.log("File uploaded:", data);
+    
+      if (!data.secure_url) {
+        console.error("Upload failed: No URL returned");
+        return;
+      }
+    
+      setFormData((prev) => ({ ...prev, [ENTRY_FILE_URL]: data.secure_url }));
     } catch (error) {
-      console.error("Upload Error:", error);
-      alert("File upload failed!");
-      return null;
+      console.error("Upload error:", error);
+    } finally {
+      setUploading(false);
     }
+    
   };
+  
+  
+  
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    let uploadedFileUrl = await uploadFileToCloudinary();
-    if (!uploadedFileUrl) return;
-
-    const updatedFormData = {
-      ...formData,
-      [ENTRY_FILE]: uploadedFileUrl, // Store uploaded file URL
-    };
-
-    const formDataEncoded = new URLSearchParams(updatedFormData).toString();
+    const formDataEncoded = new URLSearchParams(formData).toString();
     const requestUrl = `${FORM_ACTION_URL}?${formDataEncoded}`;
 
     try {
       await fetch(requestUrl, { method: "GET", mode: "no-cors" });
       alert("Form submitted successfully!");
-
-      // Reset form
       setFormData({
         [ENTRY_NAME]: "",
         [ENTRY_EMAIL]: "",
         [ENTRY_PHONE]: "",
         [ENTRY_MESSAGE]: "",
+        [ENTRY_FILE_URL]: "",
       });
-      setFile(null);
-      setFileUrl("");
     } catch (error) {
       console.error("Form submission error:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -139,20 +135,13 @@ const ContactForm = () => {
             </span>
           </div>
           <div className="h-1 w-40 bg-orange-600 my-4"></div>
-          <p className="text-sm sm:text-lg text-gray-500 max-w-2xl mx-auto">
-            Connect with us to explore authentic, handcrafted treasures that
-            blend tradition with modern artistry. Let’s bring heritage to your
-            space with timeless craftsmanship!
-          </p>
         </div>
-
         <div className="flex justify-center w-full">
           <div className="w-full sm:w-10/12 md:w-8/12 lg:w-6/12 xl:w-4/12">
             <form
               onSubmit={handleSubmit}
               className="bg-white p-6 sm:p-8 rounded-lg shadow-lg space-y-6"
             >
-              {/* Name */}
               <input
                 className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
                 type="text"
@@ -162,30 +151,24 @@ const ContactForm = () => {
                 onChange={handleChange}
                 required
               />
-
-              {/* Email and Phone */}
-              <div className="flex flex-wrap gap-4 sm:gap-6">
-                <input
-                  className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
-                  type="email"
-                  name={ENTRY_EMAIL}
-                  placeholder="Email Address"
-                  value={formData[ENTRY_EMAIL]}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
-                  type="tel"
-                  name={ENTRY_PHONE}
-                  placeholder="Phone Number"
-                  value={formData[ENTRY_PHONE]}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              {/* Message */}
+              <input
+                className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
+                type="email"
+                name={ENTRY_EMAIL}
+                placeholder="Email Address"
+                value={formData[ENTRY_EMAIL]}
+                onChange={handleChange}
+                required
+              />
+              <input
+                className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
+                type="tel"
+                name={ENTRY_PHONE}
+                placeholder="Phone Number"
+                value={formData[ENTRY_PHONE]}
+                onChange={handleChange}
+                required
+              />
               <textarea
                 className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
                 name={ENTRY_MESSAGE}
@@ -195,23 +178,25 @@ const ContactForm = () => {
                 rows="4"
                 required
               ></textarea>
-
-              {/* File Upload */}
-              <p className="text-sm text-gray-500 mb-2">Please upload a file in jpg/jpeg, png & svg format only.</p>
               <input
-                className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
                 type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-                required
+                className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
+                onChange={handleFileUpload}
+                disabled={uploading}
               />
-
-              {/* Submit Button */}
+              {uploading && (
+                <p className="text-sm text-gray-500">Uploading file...</p>
+              )}
               <button
                 type="submit"
-                className="w-full py-3 bg-orange-600 text-white rounded-md font-semibold text-lg hover:bg-orange-500 transition cursor-pointer"
+                className={`w-full py-3 rounded-md font-semibold text-lg transition cursor-pointer ${
+                  isSubmitting
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-orange-600 text-white hover:bg-orange-500"
+                }`}
+                disabled={isSubmitting}
               >
-                Send
+                {isSubmitting ? "Submitting..." : "Send"}
               </button>
             </form>
           </div>

@@ -3,22 +3,12 @@ import { BiSolidPhoneCall } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { LuHeart } from "react-icons/lu";
 // Social media icons
-import { FaFacebookF } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
-import { FaYoutube } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
 import {FaPinterestP} from "react-icons/fa6"
 // fair info icon
-import { FaCalendarAlt } from "react-icons/fa";
-import { FaRegClock } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
-
 // GSAP
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-
 gsap.registerPlugin(ScrollTrigger);
 
 import { useRef } from "react";
@@ -62,10 +52,15 @@ const Footer = () => {
     <div ref={footer} className=" md:h-fit lg:h-fit h-full w-full   md:relative md:bottom-0  lg:relative lg:bottom-0  pt-5  text-white  ">
       {/* first footer part */}
       <div className=" bg-gray-700  w-[100vw] flex justify-center">
-        <div className="max-w-[1600px] flex md:justify-around  lg:flex-row md:flex-row flex-col  w-full items-center ">
+        <div className="max-w-[1600px] flex md:justify-evenly  lg:flex-row md:flex-row flex-col  w-full items-center  md:mx-5 ">
           {/* first footer part1 */}
 
-          <div className=" flex flex-col w-[70%] md:w-[50%] space-y-3 py-9 ">
+          <div className=" flex items-center flex-col w-[70%] md:w-[50%] space-y-3 py-9    ">
+            <img src='https://res.cloudinary.com/dbnticsz8/image/upload/v1741171699/febTech/Nifa/kxielif9zwsladfkejms.jpg' alt="" className="h-auto w-72"/>
+           
+          </div>
+
+          <div className=" flex items-center flex-col w-[70%] md:w-[50%] space-y-3 py-9  ">
             <div className=" flex items-center space-x-3">
               <img
                 src="https://res.cloudinary.com/dbnticsz8/image/upload/v1738726832/febTech/Nifa/vutjx29bo0yr4lbtnijl.png"
@@ -83,7 +78,7 @@ const Footer = () => {
           </div>
 
           {/* first footer part 2 */}
-          <div className="flex flex-col space-y-2 w-64 items-start py-9">
+          <div className="flex flex-col space-y-2 w-64 items-start py-9  ">
             <div className="px-5">
               <span className=" text-white font-bold">Get In Touch</span>
               <div ref={hLine1} className="h-1 w-20 bg-white"></div>
@@ -96,7 +91,7 @@ const Footer = () => {
                 <div className="flex flex-col">
                   <span className=" font-bold">Address:</span>
                   <p>
-                    Khasra no. 402, Rampur Road, Roorkee Uttarakhand - 110070.
+                    Khasra no. 402, Rampur Road, Roorkee Uttarakhand - 247667.
                     India
                   </p>
                 </div>
@@ -129,21 +124,6 @@ const Footer = () => {
             </div>
             <div className=" flex items-center ">
               <div className=" flex p-1 ">
-                {/* <span className=" p-3 cursor-pointer">
-                  <FaFacebookF />
-                </span>
-                <span className=" p-3 cursor-pointer">
-                  <FaInstagram />
-                </span>
-                <span className=" p-3 cursor-pointer">
-                  <FaLinkedin />
-                </span>
-                <span className=" p-3 cursor-pointer">
-                  <BsTwitterX />
-                </span>
-                <span className=" p-3 cursor-pointer">
-                  <FaYoutube />
-                </span> */}
                 <span className=" px-3 cursor-pointer">
                   <FaPinterestP />
                 </span>
@@ -152,59 +132,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* first footer part 3 */}
-          {/* <div className="flex flex-col space-y-5 w-64 items-start py-9">
-            <div className="px-5">
-              <span className=" text-white font-bold">Fair Info</span>
-              <div ref={hLine2} className="h-1 w-14 bg-white"></div>
-            </div>
-            <div className="">
-              <div className=" flex p-1">
-                <span className=" p-3">
-                  <FaCalendarAlt />
-                </span>
-                <div className="flex flex-col">
-                  <span className=" font-bold">Dates:</span>
-                  <p>14th - 18th October, 2025</p>
-                </div>
-              </div>
-            </div>
-            <div className="">
-              <div className=" flex p-1">
-                <span className=" p-3">
-                  <FaRegClock />
-                </span>
-                <div className=" flex flex-col">
-                  <span className=" font-bold">Timings:</span>
-                  <p>09.00 AM – 06.00 PM (IST)</p>
-                </div>
-              </div>
-            </div>
-            <div className="">
-              <div className=" flex p-1">
-                <span className=" p-3">
-                  <FaLocationDot />
-                </span>
-                <div className=" flex flex-col">
-                  <span className=" font-bold">Venue:</span>
-                  <p>India Expo Center & Mart, Greater Noida, Delhi-NCR</p>
-                </div>
-              </div>
-            </div>
-            <div className="">
-              <div className=" flex p-1">
-                <span className=" p-3">
-                  <FaUser />
-                </span>
-                <div className=" flex flex-col">
-                  <span className=" font-bold">Admission:</span>
-                  <p>
-                    Only trade visitors aged 18+ with registration/Invitation.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div> */}
+       
         </div>
       </div>
 
