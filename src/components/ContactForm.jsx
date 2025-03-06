@@ -2,12 +2,14 @@ import React, { useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import axios from "axios";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ContactForm = () => {
   const text1 = useRef();
   const text2 = useRef();
+  const fileInputRef = useRef();  // Create a ref for the file input
 
   useGSAP(() => {
     gsap.from(text1.current, {
@@ -34,24 +36,26 @@ const ContactForm = () => {
     });
   });
 
-  const FORM_ACTION_URL ="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdpT_KmkFm2M1ThSkEG81oUihZGk68mLkWLCPeZ0_OKzyVkPw/formResponse";
+  const FORM_ACTION_URL =
+    "https://docs.google.com/forms/u/0/d/e/1FAIpQLScqQSaRHsPSU5SmpNnvAVrn1UbSnufgX2ay4Z3Ob3Mzp57LNQ/formResponse";
 
-const ENTRY_NAME = "entry.1263211320";
-const ENTRY_EMAIL = "entry.17202855";
-const ENTRY_PHONE = "entry.204990205";
-const ENTRY_MESSAGE = "entry.567167231";
-const ENTRY_FILE_URL = "entry.216404056"; // Replace with actual entry ID for file URL
+  const ENTRY_NAME = "entry.1122542914";
+  const ENTRY_EMAIL = "entry.924652405";
+  const ENTRY_PHONE = "entry.304935982";
+  const ENTRY_MESSAGE = "entry.1927596881";
+  const ENTRY_FILE_URL = "entry.1138500156"; // Replace with actual entry ID for file URL
 
   const [formData, setFormData] = useState({
     [ENTRY_NAME]: "",
     [ENTRY_EMAIL]: "",
     [ENTRY_PHONE]: "",
     [ENTRY_MESSAGE]: "",
-    [ENTRY_FILE_URL]: "", 
+    [ENTRY_FILE_URL]: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
 
+  // Handle input field changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -61,39 +65,35 @@ const ENTRY_FILE_URL = "entry.216404056"; // Replace with actual entry ID for fi
       console.log("No file selected.");
       return;
     }
-  
+
     setUploading(true);
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "nifaOverseas"); 
+    formData.append("upload_preset", "Nifa Contact us File uploads");
     formData.append("resource_type", "raw"); // Ensure the file is uploaded as raw
-  
+
     try {
       console.log("Starting file upload...");
-      const response = await fetch("https://api.cloudinary.com/v1_1/dbnticsz8/upload", {
+      const response = await fetch("https://api.cloudinary.com/v1_1/dkdyrgg3q/upload", {
         method: "POST",
         body: formData,
       });
-    
+
       const data = await response.json();
       console.log("File uploaded:", data);
-    
+
       if (!data.secure_url) {
         console.error("Upload failed: No URL returned");
         return;
       }
-    
+
       setFormData((prev) => ({ ...prev, [ENTRY_FILE_URL]: data.secure_url }));
     } catch (error) {
       console.error("Upload error:", error);
     } finally {
       setUploading(false);
     }
-    
   };
-  
-  
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -112,6 +112,9 @@ const ENTRY_FILE_URL = "entry.216404056"; // Replace with actual entry ID for fi
         [ENTRY_MESSAGE]: "",
         [ENTRY_FILE_URL]: "",
       });
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""; // Reset file input field
+      }
     } catch (error) {
       console.error("Form submission error:", error);
     } finally {
@@ -144,7 +147,7 @@ const ENTRY_FILE_URL = "entry.216404056"; // Replace with actual entry ID for fi
                 className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
                 type="text"
                 name={ENTRY_NAME}
-                placeholder="Name"
+                placeholder="Company Name"
                 value={formData[ENTRY_NAME]}
                 onChange={handleChange}
                 required
@@ -176,11 +179,14 @@ const ENTRY_FILE_URL = "entry.216404056"; // Replace with actual entry ID for fi
                 rows="4"
                 required
               ></textarea>
+              <p className="text-sm text-gray-500 mb-2">Please upload a file in image format only.</p>
+
               <input
                 type="file"
                 className="w-full p-4 border-gray-300 rounded-md bg-gray-50"
                 onChange={handleFileUpload}
                 disabled={uploading}
+                ref={fileInputRef} // Attach ref to file input
               />
               {uploading && (
                 <p className="text-sm text-gray-500">Uploading file...</p>
