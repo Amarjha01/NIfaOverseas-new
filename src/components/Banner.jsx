@@ -11,7 +11,7 @@ const Banner = ({ onClose }) => {
       {/* Banner Content */}
       <div className="h-full w-full flex justify-center items-center relative ">
         <img
-          src="https://res.cloudinary.com/dvlh2e6d0/image/upload/v1740198301/twaacdwd1gmbo9yyf3ts.jpg"
+          src="https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741250657/Nifa%20Overseas/vp1ayvtrnrxqiqtgfqbm.jpg"
           alt="Banner"
           className=" h-[60%] md:h-[80%] lg:h-[90%]  opacity-100"
         />
