@@ -1,0 +1,56 @@
+/* Keyframes for continuous pulse effect */
+@keyframes pulseBackground {
+  0% {
+    transform: scale(1);
+    background-color: #ffffff;
+  }
+
+  50% {
+    transform: scale(1.05);
+    background-color: #ff7f50;
+    /* Orange color */
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #ffffff;
+  }
+}
+
+
+
+
+@keyframes pulseBackgroundm {
+  0% {
+    transform: scale(1);
+    background-color: #ffffff;
+  }
+
+  50% {
+    transform: scale(1.05);
+    background-color: #ff7f50;
+    /* Orange color */
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #ffffff;
+  }
+}
+
+/* Apply pulse effect */
+.animate-pulseBg {
+  animation: pulseBackground 2s ease-in-out infinite;
+}
+.animate-pulseBgm {
+  animation: pulseBackgroundm 2s ease-in-out infinite;
+}
+
+/* Optional: Button styling */
+button {
+  outline: none;
+}
+
+button a {
+  text-decoration: none;
+}
