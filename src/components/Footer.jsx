@@ -2,6 +2,8 @@ import { FaLocationDot } from "react-icons/fa6";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 import { LuHeart } from "react-icons/lu";
+import { FaExternalLinkAlt } from "react-icons/fa";
+
 // Social media icons
 import {FaPinterestP} from "react-icons/fa6"
 // fair info icon
@@ -138,15 +140,16 @@ const Footer = () => {
 
       {/* second footer part */}
       <div className="bg-gray-900 h-fit w-full ">
-        <div className=" w-full flex justify-center gap-3 py-2 text-sm">
+        {/* <div className=" w-full flex justify-center gap-3 py-2 text-sm">
           <a href="#">Sitemap</a>
           <a href="#">Disclaimer</a>
           <a href="#">Privacy Policy</a>
           <a href="#">Support</a>
-        </div>
+        </div> */}
         <div className="w-full py-2 ">
           <p className=" text-center flex justify-center items-center">
-            Made With <span className="mx-1"><LuHeart /></span> FebTech IT Solutions Pvt. Ltd.
+            Made With <span className="mx-1"><LuHeart /></span> <a href="https://febtech.in/" className="" target="_blank">FebTech IT Solutions Pvt. Ltd.</a>
+            <FaExternalLinkAlt  className=" pl-0.5"/>
           </p>
         </div>
       </div>

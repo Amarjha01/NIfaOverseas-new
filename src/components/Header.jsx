@@ -4,6 +4,7 @@ import { FaPinterestP } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
 import "./components.css";
 import iso from '../assets/iso9001.png'
+import "./styles.css";
 const MENU_ITEMS = ["Home", "Statistics", "About Us", "Gallery", "Contact Us","Catalogue"];
 
 const Header = () => {
@@ -76,39 +77,60 @@ const Header = () => {
         {/* part 1 for both mobile and desktop */}
         <div
           ref={headerRef1}
-          className={` px-6 md:px-20 flex items-center  h-20 transition-transform duration-300 gap-3 ${
+          className={`  px-6 md:px-16 flex items-center bg-amber-95  md:h-20  transition-transform duration-300 gap-3 ${
             isScrolled ? "-translate-y-4" : "translate-y-0"
           }`}
         >
-          <img
-            src="https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067893/Nifa%20Overseas/ggwlzpvdrfmjeozs28w9.png"
-            alt="Logo"
-            className="h-32 md:h-40 cursor-pointer"
-          />
-          <div className=" flex flex-wrap w-[40%] md:w-[50%] gap-3 md:flex-none  ">
-            <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb5walsWNAAqh12c69MrsDJMmiWhLDsow6gw&s"
-            alt="MCA-Logo"
-            className="h-5 lg:h-8 cursor-pointer"
-          />
-          <img
-            src="https://ihgfdelhifair.in/assets/img/epch-logo-2024.png"
-            alt="EPCH-Logo"
-            className="h-5 lg:h-8 cursor-pointer"
-          />
-          <img
-            src={iso}
-            alt="ECC-ISO"
-            className="h-5 lg:h-8 cursor-pointer"
-          />
-          <img
-            src='https://www.bharat-tex.com/wp-content/uploads/2025/01/Bharat-tex-logo.png'
-            alt="Bharat-tex"
-            className="h-5 lg:h-8 cursor-pointer"
-          />
-          </div>
+          <div className=" w-full relative flex flex-col items-center  md:flex-row md:w-[40%] gap-4   ">
+            <div className="  ">
+              <img
+                src="https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067893/Nifa%20Overseas/ggwlzpvdrfmjeozs28w9.png"
+                alt="Logo"
+                className="h-32 md:h-40 cursor-pointer bg-amber-30"
+              />
+           </div>
+            <div className=" absolute top-[80%] md:left-10 md:static  flex gap-3 items-center  ">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb5walsWNAAqh12c69MrsDJMmiWhLDsow6gw&s"
+                alt="MCA-Logo"
+                className="h-5 lg:h-8 cursor-pointer"
+              />
+              <img
+                src="https://ihgfdelhifair.in/assets/img/epch-logo-2024.png"
+                alt="EPCH-Logo"
+                className="h-5 lg:h-8 cursor-pointer"
+              />
+              <img
+                src={iso}
+                alt="ECC-ISO"
+                className="h-5 lg:h-8 cursor-pointer"
+              />
+              <img
+                src='https://www.bharat-tex.com/wp-content/uploads/2025/01/Bharat-tex-logo.png'
+                alt="Bharat-tex"
+                className="h-5 lg:h-8 cursor-pointer"
+              />
+              <img
+                src='https://uploads.ifdesign.de/WdgEvent/946/images/medium/IHGF-fair.jpg'
+                alt="IHGF"
+                className="h-5 lg:h-8 cursor-pointer"
+              />
+            </div>
+       </div>
+         
+
+
+         
           
-          <div className="flex space-x-3 text-lg grow justify-end   ">
+          <div className=" flex space-x-3 text-lg grow justify-end items-center   ">
+            <div className="w-40 h-10 hidden md:flex justify-center items-center text-gray-700 font-semibold rounded-full transition-transform duration-300 ease-in-out transform cursor-pointer border border-orange-400 hover:scale-105 focus:outline-none">
+              <button
+                className="relative overflow-hidden px-6 py-2 text-lg md:text-sm uppercase rounded-full transition-all duration-300 ease-in-out bg-white text-gray-700 hover:bg-orange-400 hover:text-white active:bg-orange-500 focus:ring-4 focus:ring-orange-300 animate-pulseBg"
+                aria-label="Enquiry Now"
+              >
+                <a href="#Contact Us" className="relative z-10">Enquiry Now</a>
+              </button>
+            </div>
             {[FaPinterestP].map((Icon, index) => (
               <a key={index} href="#" className="hover:scale-125 transition">
                 <Icon className="text-xl" />
@@ -119,25 +141,38 @@ const Header = () => {
 
         {/* part 2 for mobile view */}
         <div
-          className={`md:hidden h-16 w-full flex items-center justify-between px-2 ${
+          className={`md:hidden h-16 w-full flex items-center justify-center  ${
             isScrolled ? "fixed top-0" : " "
           } ${isScrolled ? "backdrop-blur-2xl" : "bg-gray-900"}`}
         >
-          {isScrolled && (
-            <img
-              src="https://res.cloudinary.com/dbnticsz8/image/upload/v1738726832/febTech/Nifa/vutjx29bo0yr4lbtnijl.png"
-              alt="Logo"
-              className="w-32"
-            />
-          )}
-          <button
+          <div className={`w-40 h-10   flex justify-center items-center  font-semibold  rounded-full  transition-transform duration-300 ease-in-out transform cursor-pointer border border-orange-400 hover:scale-105 ${isScrolled ? "text-black" : "text-white"}`}>
+            <button
+              className=" rounded-full w-[99%] h-[99%] transition-all duration-300 ease-in-out  text-gray-700  animate-pulseBgm"
+
+            >
+              <a href="#Contact Us" className=" lg:text-lg md:text-sm uppercase ">Enquiry Now</a>
+            </button>
+          </div>
+          {/* {isScrolled && (
+
+            // <img
+            //   src="https://res.cloudinary.com/dbnticsz8/image/upload/v1738726832/febTech/Nifa/vutjx29bo0yr4lbtnijl.png"
+            //   alt="Logo"
+            //   className="w-32"
+            // />
+          )} */}
+          {
+
+          
+          
+          /* <button
             className={`md:hidden text-2xl focus:outline-none cursor-pointer pr-4 z-20 ${
               isScrolled ? "text-black" : "text-white"
             }`}
             onClick={handleToggleOpen} // Toggle button to open/close the menu
           >
             {isToggleOpen ? <FaTimes /> : <FaBars />}
-          </button>
+          </button> */}
         </div>
 
         {/* part 2 for desktop view */}
@@ -178,7 +213,7 @@ const Header = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isToggleOpen && (
           <motion.nav
             ref={mobileMenuRef} // Attach the ref to the mobile menu
@@ -213,7 +248,7 @@ const Header = () => {
             ))}
           </motion.nav>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </header>
   );
 };
