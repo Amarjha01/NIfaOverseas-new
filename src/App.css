@@ -24,3 +24,22 @@ html{
 .neue{
   font-family: neue;
 }
+
+
+@font-face{
+  font-family: booska;
+  src: url(./fonts/Boska-Variable.ttf);
+}
+
+.booska{
+  font-family: booska;
+}
+
+@font-face{
+  font-family: stardom;
+  src: url(./fonts/Stardom-Regular.otf);
+}
+
+.stardom{
+  font-family: stardom ;
+}
