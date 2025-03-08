@@ -39,7 +39,6 @@ const App = () => {
       <Stats />
       <About />
       <ImageGallery />
-      
       <Story />
       <Category />
       <Choose />

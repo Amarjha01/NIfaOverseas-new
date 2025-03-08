@@ -48,7 +48,7 @@ const Welcome = () => {
       <div className="max-w-5xl">
         <h1
           ref={(el) => (textRefs.current[0] = el)}
-          className="text-5xl md:text-8xl font-extrabold leading-tight"
+          className="text-5xl md:text-9xl font-extrabold leading-tight uppercase"
         >
           Nifa Overseas
         </h1>

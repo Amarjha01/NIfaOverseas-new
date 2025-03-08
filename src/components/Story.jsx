@@ -104,7 +104,7 @@ const Story = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden -z-10">
+    <div className="overflow-hidden ">
       {/* Hero Section */}
       <div className="relative w-full h-screen mt-10 flex flex-col sm:flex-row items-center justify-center sm:justify-between px-6 sm:px-10 bg-gradient-to-r from-teal-600 to-teal-800 text-white">
         <div
@@ -117,12 +117,12 @@ const Story = () => {
           <p className="text-lg sm:text-xl mb-8">
             At Nifa Overseas, we take immense pride in supporting and empowering Indian artisans. Many of our craftsmen come from families with generations of metalworking experience, and by partnering with them, we help preserve this dying art form.
           </p>
-          <a href="#join-us" className="bg-teal-700 text-white py-3 px-6 text-lg sm:text-2xl rounded-lg shadow-md hover:bg-teal-800 transition duration-300">Join Our Mission</a>
+          <a href="#Contact Us" className="bg-teal-700 text-white py-3 px-6 text-lg sm:text-2xl rounded-lg shadow-md hover:bg-teal-800 transition duration-300 cursor-pointer">Join Our Mission</a>
         </div>
       </div>
 
       {/* Diagonal Split Section */}
-      <div className="relative w-full py-20 sm:py-36 text-white px-6 sm:px-10">
+      <div className="relative w-full py-20 sm:py-36 text-white px-6 sm:px-10 -z-10">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-indigo-900 opacity-80"></div>
         <div className="relative z-10">
           <div className="relative w-full flex flex-col sm:flex-row items-center justify-center sm:justify-between bg-gradient-to-l from-yellow-500 to-orange-500 p-6 sm:p-10 rounded-3xl shadow-lg transform sm:-skew-x-12">

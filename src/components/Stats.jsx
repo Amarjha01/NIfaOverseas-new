@@ -1,5 +1,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const statsData = [
   { number: 3000, label: "USA" },
@@ -18,11 +21,16 @@ const Statistics = () => {
         { innerText: 0 }, // Start from 0
         {
           innerText: statsData[index].number, // Animate to the target number
-          duration: 2, // Animation duration in seconds
+          duration: 2,
           ease: "power1.out",
           snap: { innerText: 1 }, // Ensures whole numbers (no decimals)
           onUpdate: function () {
             el.innerText = Math.floor(el.innerText); // Round to nearest whole number
+          },
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%", // Starts animation when the element enters the viewport
+            toggleActions: "play none none none",
           },
         }
       );
