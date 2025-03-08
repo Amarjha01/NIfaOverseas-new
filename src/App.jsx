@@ -9,6 +9,8 @@ import About from "./components/About";
 import ContactForm from "./components/ContactForm";
 import Banner from "./components/Banner";
 import Catalogue from "./components/Catalogue";
+import Serve from "./components/Serve"
+import Choose from "./components/Choose";
 import Welcome from "./components/Welcome";
 
 const App = () => {
@@ -32,6 +34,8 @@ const App = () => {
       <About />
       <ImageGallery />
       <Catalogue />
+      <Choose />
+      <Serve />
       <ContactForm />
       <Footer />
     </div>
