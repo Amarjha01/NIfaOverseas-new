@@ -1,21 +1,41 @@
-import React from 'react'
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 const Welcome = () => {
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      heroRef.current,
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }
+    );
+  }, []);
+
   return (
-    <div className='px-8 '>
-        <div>
-            <p className=' font-extrabold text-3xl stardom '>Nifa Overseas – Leading Manufacturer & Exporter of Handmade Metal Bells & Home Décor</p>
-        </div>
-        <div className=' text-lg booska'>
-            <p>Welcome to <span className=' font-extrabold'>Nifa Overseas,</span> where we craft <span className=' font-extrabold'>exquisite handmade metal bells and home décor pieces</span> that blend <span className=' font-extrabold'>heritage, sustainability, and craftsmanship</span>. Based in <span className=' font-extrabold'>India since 2020</span>, we are a <span className=' font-extrabold'>leading manufacturer and exporter of handcrafted metal décor, rustic bells, and festive ornaments, </span>catering to <span className=' font-extrabold'>B2B buyers worldwide.</span></p>
-
-            <p>Our products are more than just décor; they represent <span className=' font-extrabold'>centuries-old artisan traditions,</span> passed down through generations. Each piece is <span className=' font-extrabold'>carefully handcrafted using traditional techniques and simple tools, </span>ensuring unmatched quality, character, and authenticity.</p>
-
-            <p>We proudly serve <span className=' font-extrabold'>small, medium, and bulk buyers,</span> including <span className=' font-extrabold'>wholesalers, retailers, importers, e-commerce sellers, and interior designers</span> across the <span className=' font-extrabold'> USA, Europe, and beyond</span>. With the rising demand for <span className=' font-extrabold'>Christmas décor, rustic home accents, and sustainable handmade products,</span> our collections are <span className=' font-extrabold'>highly sought-after by businesses looking for unique, eco-friendly solutions</span>.</p>
-            <p className=' font-extrabold'>✨ Every piece we offer is not just a product—it’s a story of skill, heritage, and sustainability. ✨</p>
-        </div>
-    </div>
-  )
-}
+    <section
+      ref={heroRef}
+      className="relative w-full min-h-screen flex flex-col items-center justify-center text-center p-6"
+    >
+      <div className="max-w-5xl">
+        <h1 className="text-4xl md:text-9xl font-bold text-gray-900 leading-tight">
+          Nifa Overseas
+        </h1>
+        <p className="mt-4 text-lg md:text-3xl text-gray-700">
+          Leading Manufacturer & Exporter of Handmade Metal Bells & Home Décor
+        </p>
+        <p className="mt-6 text-gray-600 text-md md:text-lg">
+          Crafted with passion in India since 2020, our handmade metal décor and rustic bells blend heritage, sustainability, and craftsmanship. Every piece embodies centuries-old artisan traditions, ensuring authenticity and unmatched quality.
+        </p>
+        <p className="mt-4 text-gray-600 text-md md:text-lg">
+          Serving wholesalers, retailers, e-commerce sellers, and interior designers across the USA, Europe, and beyond with eco-friendly, handcrafted home accents perfect for Christmas and rustic settings.
+        </p>
+        <p className="mt-6 text-xl text-gray-800 font-semibold italic">
+          ✨ Every piece we offer is not just a product—it’s a story of skill, heritage, and sustainability. ✨
+        </p>
+      </div>
+    </section>
+  );
+};
 
 export default Welcome;
