@@ -9,6 +9,8 @@ import About from "./components/About";
 import ContactForm from "./components/ContactForm";
 import Banner from "./components/Banner";
 import Catalogue from "./components/Catalogue";
+import Serve from "./components/Serve"
+import Choose from "./components/Choose";
 
 const App = () => {
   const [showBanner, setShowBanner] = useState(true); // Controls banner visibility
@@ -30,6 +32,8 @@ const App = () => {
       <About />
       <ImageGallery />
       <Catalogue />
+      <Choose />
+      <Serve />
       <ContactForm />
       <Footer />
     </div>
