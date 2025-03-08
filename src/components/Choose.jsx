@@ -1,10 +1,8 @@
-
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
 
 const Choose = () => {
   const containerRef = useRef(null);
@@ -12,6 +10,8 @@ const Choose = () => {
   const paragraphRef = useRef(null);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 640; // Tailwind’s "sm" breakpoint
+
     // Heading Animation
     gsap.from(headingRef.current, {
       y: -50,
@@ -20,7 +20,7 @@ const Choose = () => {
       ease: "power3.out",
       scrollTrigger: {
         trigger: headingRef.current,
-        start: "top 90%", // Starts when heading is just inside viewport
+        start: "top 90%",
         toggleActions: "play none none none",
       },
     });
@@ -33,26 +33,26 @@ const Choose = () => {
       ease: "power3.out",
       scrollTrigger: {
         trigger: paragraphRef.current,
-        start: "top 95%", // Delayed slightly after heading
+        start: "top 95%",
         toggleActions: "play none none none",
       },
     });
 
-    // Feature Boxes Animation
+    // Feature Boxes Animation (Left for Mobile, Default for Desktop)
     gsap.from(".feature-box", {
-      y: 120, // Increased for a noticeable reveal effect
+      x: isMobile ? -100 : 0, // Moves from the left on mobile
+      y: isMobile ? 0 : 120, // Moves down on larger screens
       opacity: 0,
-      stagger: 0.3, // Smooth overlapping animations
-      duration: 1.5,
-      ease: "power3.out",
+      stagger: 0.1,
+      duration: 0.1,
+      ease: "power1.out",
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 80%", // Ensures animation happens after entering viewport
+        start: "top 80%",
         end: "bottom 50%",
-        scrub: true, // Smoothens the effect
-        // markers:true
+        scrub: true,
       },
-    },"-=0.5");
+    });
   }, []);
 
   return (

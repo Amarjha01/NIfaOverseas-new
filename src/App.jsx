@@ -39,12 +39,13 @@ const App = () => {
       <Stats />
       <About />
       <ImageGallery />
-      <Catalogue />
+      
       <Story />
       <Category />
       <Choose />
       <Serve />
       <Partner />
+      <Catalogue />
       <ContactForm />
       <Footer />
     </div>

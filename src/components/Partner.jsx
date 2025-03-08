@@ -1,8 +1,35 @@
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 
 const Partner = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      containerRef.current,
+      { height: 0, width: 0, opacity: 0 },
+      {
+        delay:5,
+        height: "auto",
+        width: "100%",
+        opacity: 1,
+        duration: 1.5,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          // toggleActions: "play none none none",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
+
   return (
-    <div className="bg-white w-full py-20 px-6 md:px-12 lg:px-24 text-gray-900">
+    <div ref={containerRef} className="bg-white w-full py-20 px-6 md:px-12 lg:px-24 text-gray-900 overflow-hidden">
       <div className="max-w-screen-xl mx-auto text-center">
         {/* Header Section */}
         <h2 className="text-4xl md:text-5xl font-extrabold text-green-700 mb-6">
@@ -46,8 +73,6 @@ const Partner = () => {
             🌍 Nifa Overseas – Bringing Handmade Heritage to the World.
           </p>
         </div>
-
-        
       </div>
     </div>
   );
