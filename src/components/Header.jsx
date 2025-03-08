@@ -126,16 +126,16 @@ const Header = () => {
             <div className="w-40 h-10 hidden md:flex justify-center items-center text-gray-700 font-semibold rounded-full transition-transform duration-300 ease-in-out transform cursor-pointer border border-orange-400 hover:scale-105 focus:outline-none">
               <button
                 className="relative overflow-hidden px-6 py-2 text-lg md:text-sm uppercase rounded-full transition-all duration-300 ease-in-out bg-white text-gray-700 hover:bg-orange-400 hover:text-white active:bg-orange-500 focus:ring-4 focus:ring-orange-300 animate-pulseBg"
-                aria-label="Enquiry Now"
+                aria-label="enquire Now"
               >
-                <a href="#Contact Us" className="relative z-10">Enquiry Now</a>
+                <a href="#Contact Us" className="relative z-10">enquire Now</a>
               </button>
             </div>
-            {[FaPinterestP].map((Icon, index) => (
+            {/* {[FaPinterestP].map((Icon, index) => (
               <a key={index} href="#" className="hover:scale-125 transition">
                 <Icon className="text-xl" />
               </a>
-            ))}
+            ))} */}
           </div>
         </div>
 
@@ -150,7 +150,7 @@ const Header = () => {
               className=" rounded-full w-[99%] h-[99%] transition-all duration-300 ease-in-out  text-gray-700  animate-pulseBgm"
 
             >
-              <a href="#Contact Us" className=" lg:text-lg md:text-sm uppercase ">Enquiry Now</a>
+              <a href="#Contact Us" className=" lg:text-lg md:text-sm uppercase ">enquire Now</a>
             </button>
           </div>
           {/* {isScrolled && (
