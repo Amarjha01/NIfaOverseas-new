@@ -9,6 +9,7 @@ import About from "./components/About";
 import ContactForm from "./components/ContactForm";
 import Banner from "./components/Banner";
 import Catalogue from "./components/Catalogue";
+import Welcome from "./components/Welcome";
 
 const App = () => {
   const [showBanner, setShowBanner] = useState(true); // Controls banner visibility
@@ -25,6 +26,7 @@ const App = () => {
         SetShowStats(true);
       }} />}
       <Header />
+      <Welcome />
       <HeroSection />
       {showStats && <Stats />}
       <About />
