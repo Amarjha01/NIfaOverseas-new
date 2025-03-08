@@ -11,8 +11,12 @@ import Banner from "./components/Banner";
 import Catalogue from "./components/Catalogue";
 import Serve from "./components/Serve"
 import Choose from "./components/Choose";
+
 import Partner from "./components/Partner"
 import Category from "./components/Category"
+
+import Welcome from "./components/Welcome";
+
 
 const App = () => {
   const [showBanner, setShowBanner] = useState(true); // Controls banner visibility
@@ -29,6 +33,7 @@ const App = () => {
         SetShowStats(true);
       }} />}
       <Header />
+      <Welcome />
       <HeroSection />
       {showStats && <Stats />}
       <About />

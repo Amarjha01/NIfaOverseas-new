@@ -13,6 +13,17 @@
 } */
 
 /* ===== Logo and Social Icons ===== */
+
+
+
+@font-face{
+  font-family: booska;
+  src: url(./fonts/Boska-Variable.ttf);
+}
+
+.booska-400{
+  font-family: booska;
+}
 header .logo {
   transition: transform 0.3s ease-in-out;
 }
