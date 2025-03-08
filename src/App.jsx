@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Video from "./components/Video";
@@ -14,6 +14,7 @@ import Choose from "./components/Choose";
 
 import Partner from "./components/Partner"
 import Category from "./components/Category"
+import Story from "./components/Story"
 
 import Welcome from "./components/Welcome";
 
@@ -39,6 +40,7 @@ const App = () => {
       <About />
       <ImageGallery />
       <Catalogue />
+      <Story />
       <Category />
       <Choose />
       <Serve />
