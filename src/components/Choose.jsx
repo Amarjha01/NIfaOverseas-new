@@ -1,8 +1,10 @@
+
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+
 
 const Choose = () => {
   const containerRef = useRef(null);
