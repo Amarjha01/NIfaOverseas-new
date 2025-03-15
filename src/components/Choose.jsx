@@ -1,91 +1,78 @@
-import gsap from "gsap";
-import { useRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { IoEarth, IoPricetag } from "react-icons/io5";
+import { BiSolidOffer } from "react-icons/bi";
+import { IoIosRocket } from "react-icons/io";
+import { GiEcology } from "react-icons/gi";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Choose = () => {
-  const containerRef = useRef(null);
-  const headingRef = useRef(null);
-  const paragraphRef = useRef(null);
+  const textRefs = useRef([]);
+  const imgRef = useRef(null);
 
   useEffect(() => {
-    const isMobile = window.innerWidth < 640; // Tailwind’s "sm" breakpoint
-
-    // Heading Animation
-    gsap.from(headingRef.current, {
-      y: -50,
-      opacity: 0,
-      duration: 1.2,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: headingRef.current,
-        start: "top 90%",
-        toggleActions: "play none none none",
-      },
+    textRefs.current.forEach((el, index) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
     });
 
-    // Paragraph Animation
-    gsap.from(paragraphRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1.2,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: paragraphRef.current,
-        start: "top 95%",
-        toggleActions: "play none none none",
-      },
-    });
-
-    // Feature Boxes Animation (Left for Mobile, Default for Desktop)
-    gsap.from(".feature-box", {
-      x: isMobile ? -100 : 0, // Moves from the left on mobile
-      y: isMobile ? 0 : 120, // Moves down on larger screens
-      opacity: 0,
-      stagger: 0.1,
-      duration: 0.1,
-      ease: "power1.out",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-        end: "bottom 50%",
-        scrub: true,
-      },
-    });
+    gsap.fromTo(
+      imgRef.current,
+      { opacity: 0, scale: 0.9 },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: imgRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="bg-gradient-to-r mt-10 from-teal-100 via-blue-200 to-teal-300 py-16 px-6 sm:px-10 lg:px-16"
-    >
-      <div className="max-w-7xl mx-auto text-center mb-12">
-        <h2 ref={headingRef} className="text-4xl font-extrabold text-indigo-700 mb-4">
-          Why Choose Nifa Overseas?
-        </h2>
-        <p ref={paragraphRef} className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-          With over 20 years of experience, Nifa Overseas is your trusted partner in providing high-quality handcrafted metal décor and custom solutions tailored to your business needs.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-        {[
-          { icon: "🌍", title: "Expert Handmade Manufacturers", text: "With over 20 years of artisan experience, we specialize in crafting high-quality, bespoke metal décor that fits your unique needs." },
-          { icon: "💰", title: "Wholesale Pricing & Bulk Discounts", text: "We offer competitive rates and bulk discounts for buyers of all sizes, from small boutiques to large wholesalers." },
-          { icon: "🚀", title: "Fast Global Shipping", text: "Enjoy secure and timely deliveries across the USA, Europe, and worldwide, ensuring your products reach you on time, every time." },
-          { icon: "🔖", title: "Custom Orders & Branding", text: "Get your logo, labels, and exclusive designs tailored to your needs, ensuring your brand stands out with every product." },
-          { icon: "📦", title: "Ethical & Sustainable Production", text: "We pride ourselves on using eco-friendly materials and supporting local Indian artisans, ensuring a responsible production process." },
-          { icon: "✅", title: "Private-Label & Custom Branding Solutions", text: "Looking to sell under your own brand? We offer custom logo branding, private-label packaging, and exclusive product modifications to create a unique, market-ready collection for your business." }
-        ].map((item, index) => (
-          <div key={index} className="feature-box bg-white rounded-lg shadow-lg p-8 text-left">
-            <div className="flex items-center mb-4">
-              <span className="text-4xl text-indigo-600 mr-4">{item.icon}</span>
-              <h3 className="text-2xl font-semibold text-indigo-700">{item.title}</h3>
-            </div>
-            <p className="text-lg text-gray-700">{item.text}</p>
-          </div>
-        ))}
+    <div className="my-10 w-full h-auto text-xl font-bold relative">
+      <h2 className="text-5xl p-9">Why Choose Nifa Overseas?</h2>
+      <div className="w-full h-auto px-6 flex flex-col lg:flex-row justify-between lg:items-center gap-10 lg:gap-1">
+        <div className="flex flex-col gap-3">
+          {[
+            { icon: <IoEarth className="text-3xl text-amber-600" />, text: "Expert Handmade Manufacturers – Over 20 years of artisan experience in crafting high-quality metal décor." },
+            { icon: <BiSolidOffer className="text-3xl text-green-500" />, text: "Wholesale Pricing & Bulk Discounts – Competitive rates for small, medium, and large buyers." },
+            { icon: <IoIosRocket className="text-3xl text-amber-600" />, text: "Fast Global Shipping – Secure and timely deliveries across the USA, Europe, and worldwide." },
+            { icon: <IoPricetag className="text-3xl text-green-500" />, text: "Custom Orders & Branding – Get your logo, labels, and exclusive designs tailored to your needs." },
+            { icon: <GiEcology className="text-3xl text-amber-600" />, text: "Ethical & Sustainable Production – Handcrafted using eco-friendly materials, supporting Indian artisans." }
+          ].map((item, index) => (
+            <h3 key={index} ref={(el) => (textRefs.current[index] = el)} className="flex gap-3 opacity-0">
+              {item.icon} {item.text}
+            </h3>
+          ))}
+        </div>
+        <div className="lg:w-[50%] h-full flex justify-end bg-white">
+          <img
+            ref={imgRef}
+            src="https://highbix.my.canva.site/nifaoverseasdemo/_assets/media/c07203a47f6c130e6e07f2f957b44852.jpg"
+            alt="Why Choose Us"
+            className="lg:h-[20vw] opacity-0"
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 {
-  "homepage": "https://amarjha01.github.io/NIfaOverseas-new/",
+ "homepage": "https://amarjha01.github.io/NIfaOverseas-new/",
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
@@ -7,7 +7,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "dev": "vite --host 0.0.0.0",
+    "dev": "vite ",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

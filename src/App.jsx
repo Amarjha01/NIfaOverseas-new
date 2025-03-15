@@ -11,39 +11,34 @@ import Banner from "./components/Banner";
 import Catalogue from "./components/Catalogue";
 import Serve from "./components/Serve"
 import Choose from "./components/Choose";
-
-import Partner from "./components/Partner"
 import Category from "./components/Category"
 import Story from "./components/Story"
-
-import Welcome from "./components/Welcome";
+import Slider from "./components/Slider";
+import Customization from "./components/Customization";
+import FloatBtn from "./components/FloatBtn";
 
 
 const App = () => {
   const [showBanner, setShowBanner] = useState(true); // Controls banner visibility
-  // const [showStats , SetShowStats] = useState(false);
-  // const [welcome , setWelcome] = useState(false);
-  // Scroll to top on page load
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+
 
   return (
-    <div className="flex flex-col items-center overflow-x-hidden scroll-smooth neue">
+    <div className="flex flex-col items-center overflow-x-hidden scroll-smooth ">
       {showBanner && <Banner onClose={() => {
         setShowBanner(false);
       }} />}
+      <FloatBtn />
       <Header />
-      <Welcome />
       <Video />
       <Stats />
       <About />
-      <ImageGallery />
       <Story />
+      <ImageGallery />
       <Category />
+      <Slider />
+      <Customization />
       <Choose />
       <Serve />
-      <Partner />
       <Catalogue />
       <ContactForm />
       <Footer />

@@ -25,7 +25,7 @@ const imagesMobile = [
   'https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741250781/Nifa%20Overseas/xalz3klj7eruarnhjwn4.jpg',
   'https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067805/Nifa%20Overseas/uwy8jxye2thjfbdaesgl.jpg',
   'https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067811/Nifa%20Overseas/qkiscc8y9ioog86w9qev.jpg',
-'https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067818/Nifa%20Overseas/oozdepuikmd5rfkldrst.jpg',
+  'https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067818/Nifa%20Overseas/oozdepuikmd5rfkldrst.jpg',
   'https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067829/Nifa%20Overseas/efqv8xvg8g5r3bhxdid1.jpg',
   'https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067835/Nifa%20Overseas/hzbxfezloyk0e1gsjuv3.jpg',
   'https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067840/Nifa%20Overseas/hyundanpljdsgqnhoxt9.jpg',
@@ -68,7 +68,7 @@ const ImageGallery = () => {
 
   return (
     <div className="w-full h-auto flex justify-center" id="Gallery">
-      <div className="w-8/10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-4 mt-15">
+      <div className="  w-8/10 grid grid-cols-4 md:grid-cols-6  gap-4 py-4 ">
         {imagesDesktop.map((img, index) => (
           <img
             key={index}
@@ -76,7 +76,7 @@ const ImageGallery = () => {
             src={img}
             alt={`Image ${index + 1}`}
             loading="lazy"
-            className="hidden lg:block w-full h-80 drop-shadow-lg object-cover rounded-lg shadow-lg aspect-square cursor-pointer"
+            className="hidden lg:block w-full drop-shadow-lg object-cover rounded-lg shadow-lg aspect-square cursor-pointer"
           />
         ))}
         {imagesMobile.map((img, index) => (
@@ -86,7 +86,7 @@ const ImageGallery = () => {
             src={img}
             alt={`Image ${index + 1}`}
             loading="lazy"
-            className="lg:hidden block w-full h-80 drop-shadow-lg object-cover rounded-lg shadow-lg aspect-square cursor-pointer"
+            className="lg:hidden block w-full drop-shadow-lg object-cover rounded-lg shadow-lg aspect-square cursor-pointer"
           />
         ))}
       </div>

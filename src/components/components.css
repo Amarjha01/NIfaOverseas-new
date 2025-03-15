@@ -1,19 +1,3 @@
-/* .bgimg{
-  background-image: url('../assets/bgimg.png');
-  background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-} */
-/* ===== Header Styles ===== */
-/* header {
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-} */
-
-/* ===== Logo and Social Icons ===== */
-
 
 
 @font-face{
@@ -157,4 +141,104 @@ header .toggle-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   transform: scale(1.1);
+}
+
+
+.shadow-c {
+    position: relative;
+    background: white;
+    /* box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.3) ; */
+    /* box-shadow: -1px 0 5px rgba(0, 0, 0, 0.2), 1px 0 5px rgba(0, 0, 0, 0.2); */
+
+}
+  
+.shadow-c::before {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 10%;
+  width: 90%;
+  height: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  transform-origin: left;
+  transform: skewY(5deg);
+  z-index: -1;
+  filter: blur(2px);
+}
+
+.shadow-c::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  right: 10%;
+  width: 90%;
+  height: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  transform-origin: right;
+  transform: skewY(-5deg);
+  z-index: -1;
+  filter: blur(2px);
+}
+
+
+.shadow-custome{
+  box-shadow: 5px 5px 14px  rgba(0, 0, 0, 0.977);
+}
+
+
+/* Keyframes for continuous pulse effect */
+@keyframes pulseBackground {
+  0% {
+    transform: scale(1);
+    background-color: #ffffff;
+  }
+
+  50% {
+    transform: scale(1.05);
+    background-color: #ff7f50;
+    /* Orange color */
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #ffffff;
+  }
+}
+
+
+
+
+@keyframes pulseBackgroundm {
+  0% {
+    transform: scale(1);
+    background-color: #ffffff;
+  }
+
+  50% {
+    transform: scale(1.05);
+    background-color: #ff7f50;
+    /* Orange color */
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #ffffff;
+  }
+}
+
+/* Apply pulse effect */
+.animate-pulseBg {
+  animation: pulseBackground 2s ease-in-out infinite;
+}
+.animate-pulseBgm {
+  animation: pulseBackgroundm 2s ease-in-out infinite;
+}
+
+/* Optional: Button styling */
+button {
+  outline: none;
+}
+
+button a {
+  text-decoration: none;
 }

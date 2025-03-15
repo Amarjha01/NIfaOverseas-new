@@ -51,39 +51,50 @@ const Footer = () => {
   
   
   return (
-    <div ref={footer} className=" md:h-fit lg:h-fit h-full w-full   md:relative md:bottom-0  lg:relative lg:bottom-0  pt-5  text-white  ">
+    <div ref={footer} className=" text-black md:h-fit lg:h-fit h-full w-full   md:relative md:bottom-0  lg:relative lg:bottom-0  pt-5   ">
       {/* first footer part */}
-      <div className=" bg-gray-700  w-[100vw] flex justify-center">
+      <div className=" bg-[#f2eee7]  w-[100vw] flex justify-center">
         <div className="max-w-[1600px] flex md:justify-evenly  lg:flex-row md:flex-row flex-col  w-full items-center  md:mx-5 ">
           {/* first footer part1 */}
 
           <div className=" flex items-center flex-col w-[70%] md:w-[50%] space-y-3 py-9    ">
-            <img src='https://res.cloudinary.com/dbnticsz8/image/upload/v1741171699/febTech/Nifa/kxielif9zwsladfkejms.jpg' alt="" className="h-auto w-72"/>
+            <img src='https://res.cloudinary.com/dbnticsz8/image/upload/v1741171699/febTech/Nifa/kxielif9zwsladfkejms.jpg' alt=" Certificate" className="h-auto w-72"/>
            
           </div>
 
-          <div className=" flex items-center flex-col w-[70%] md:w-[50%] space-y-3 py-9  ">
-            <div className=" flex items-center space-x-3">
-              <img
-                src="https://res.cloudinary.com/dbnticsz8/image/upload/v1738726832/febTech/Nifa/vutjx29bo0yr4lbtnijl.png"
-                alt=""
-                className="h-16 w-20"
-              />
-              <div className=" ">
+          <div className="  text-center uppercase   w-[70%] md:w-[50%] space-y-3 py-9 ">
+            <div className=" flex w-full justify-center items-center space-x-3">
+            <img
+              src="https://res.cloudinary.com/dbnticsz8/image/upload/v1741778744/febTech/Nifa/jvxkmr90yb6zy5yfxjpw.png"
+              alt="Logo-new"
+              className=" w-36"
+            />
+              {/* <div className=" ">
                 <span className="font-bold">NifaOverseas</span>
                 <p>Nifa Overseas Pvt. Ltd.</p>
-              </div>
+              </div> */}
             </div>
-            <div className=" md:w-[80%] w-full text-md">
-            Bringing heritage to life with authentic handcrafted treasures! We specialize in antique handicrafts, crafted by skilled artisans with 100% originality and sustainable practices. Explore our globally loved collection and add a touch of tradition to your space
+            <div className=" w-full ">
+            {/* Bringing heritage to life with authentic handcrafted treasures! We specialize in antique handicrafts, crafted by skilled artisans with 100% originality and sustainable practices. Explore our globally loved collection and add a touch of tradition to your space */}
+            <ul className=" text-4xl flex flex-col items-center  ">
+              <li className=" ">makers OF</li>
+              <li className="font-bold ">Handmade</li>
+              <li className=" font-bold">Bells, hangings</li>
+              <li className=" ">and decor</li>
+              <li className=" text-sm">Truly Handmade with Love</li>
+              <li>
+                <img src="https://res.cloudinary.com/dbnticsz8/image/upload/v1741847926/febTech/Nifa/xnazm6ownhplzbnrbhd2.png" alt="Made in india logo" className="w-32" />
+              </li>
+            </ul>
+            
             </div>
           </div>
 
           {/* first footer part 2 */}
           <div className="flex flex-col space-y-2 w-64 items-start py-9  ">
             <div className="px-5">
-              <span className=" text-white font-bold">Get In Touch</span>
-              <div ref={hLine1} className="h-1 w-20 bg-white"></div>
+              <span className=" font-bold">Get In Touch</span>
+              <div ref={hLine1} className="h-1 w-20 bg-black"></div>
             </div>
             <div className="">
               <div className=" flex p-1">
@@ -139,7 +150,7 @@ const Footer = () => {
       </div>
 
       {/* second footer part */}
-      <div className="bg-gray-900 h-fit w-full ">
+      <div className="bg-gray-900 h-fit w-full text-white ">
         {/* <div className=" w-full flex justify-center gap-3 py-2 text-sm">
           <a href="#">Sitemap</a>
           <a href="#">Disclaimer</a>

@@ -1,37 +1,67 @@
-import React, { useState, useRef } from 'react';
-import ctl from '../assets/Catalogue.pdf'
+import React, { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register GSAP ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
 function CatalogButton() {
-  // State management for form and submission
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    companyName: '',
-    email: '',
-    phone: '',
+    companyName: "",
+    email: "",
+    phone: "",
   });
 
-  const fileInputRef = useRef(null);
+  const formRef = useRef(null);
+  const buttonRef = useRef(null);
 
-  // Google Form action URL and entry IDs
+  useEffect(() => {
+    // Animate button on scroll
+    gsap.fromTo(
+      buttonRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: buttonRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+
+    // Animate form when it appears
+    if (showForm) {
+      gsap.fromTo(
+        formRef.current,
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.5 }
+      );
+    }
+  }, [showForm]);
+
+  // Google Form submission details
   const FORM_ACTION_URL =
-    'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdkAtHQofJSWPqc6ftyT_kwmkU8Ex3Zt4RzbrbKKUblnDapFA/formResponse';
+    "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdkAtHQofJSWPqc6ftyT_kwmkU8Ex3Zt4RzbrbKKUblnDapFA/formResponse";
+  const ENTRY_COMPANY_NAME = "entry.320503375";
+  const ENTRY_EMAIL = "entry.533063009";
+  const ENTRY_PHONE = "entry.1215093187";
 
-  const ENTRY_COMPANY_NAME = 'entry.320503375';
-  const ENTRY_EMAIL = 'entry.533063009';
-  const ENTRY_PHONE = 'entry.1215093187';
-
-  // Handle form data change
+  // Handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Form submission logic to Google Form
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Prepare data for Google Form submission
+    // Prepare form data for Google Form
     const formDataEncoded = new URLSearchParams({
       [ENTRY_COMPANY_NAME]: formData.companyName,
       [ENTRY_EMAIL]: formData.email,
@@ -41,55 +71,42 @@ function CatalogButton() {
     const requestUrl = `${FORM_ACTION_URL}?${formDataEncoded}`;
 
     try {
-      // Submit form to Google Form
       await fetch(requestUrl, {
-        method: 'GET',
-        mode: 'no-cors',
+        method: "GET",
+        mode: "no-cors",
       });
 
-      alert('Form submitted successfully! The catalog will download automatically.');
+      alert("Request submitted successfully! You will receive the catalog via email.");
       setFormData({
-        companyName: '',
-        email: '',
-        phone: '',
+        companyName: "",
+        email: "",
+        phone: "",
       });
-      setShowForm(false); // Close the form after submission
-
-      // Trigger the file download
-      const link = document.createElement('a');
-      link.href = ctl;  // The file URL
-      link.download = 'Catalogue.pdf';  // Optional: You can specify a name for the file
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);  // Clean up the DOM after clicking
+      setShowForm(false);
     } catch (error) {
-      alert('Error submitting the form!');
-      console.error('Form submission error:', error);
+      alert("Error submitting the request!");
+      console.error("Form submission error:", error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Handle open form
-  const handleOpenForm = () => {
-    setShowForm(true);
-  };
-
   return (
     <div id="Catalogue" className="flex justify-center mt-8">
-      {/* Download Button */}
+      {/* Request Catalogue Button */}
       <button
+        ref={buttonRef}
         className="bg-orange-600 text-white font-semibold py-3 px-6 rounded-full flex items-center transition-transform duration-300 ease-in-out transform cursor-pointer hover:bg-orange-500 hover:scale-105"
-        onClick={handleOpenForm}
+        onClick={() => setShowForm(true)}
       >
-        <span className="mr-3 text-lg uppercase">Download Catalogue</span>
-        <span className="text-2xl">&#8595;</span>
+        <span className="mr-3 text-lg uppercase">Request Catalogue</span>
+        <span className="text-2xl">&#8594;</span>
       </button>
 
       {/* Form Modal */}
       {showForm && (
         <div className="fixed inset-0 flex justify-center items-center backdrop-blur-xl z-50">
-          <div className="bg-white p-8 rounded-lg shadow-xl w-11/12 sm:w-96">
+          <div ref={formRef} className="bg-white p-8 rounded-lg shadow-xl w-11/12 sm:w-96">
             <div className="relative">
               <button
                 onClick={() => setShowForm(false)}
@@ -112,7 +129,7 @@ function CatalogButton() {
               </button>
             </div>
 
-            <h2 className="text-2xl font-semibold mb-4">Download the Catalogue</h2>
+            <h2 className="text-2xl font-semibold mb-4">Request the Catalogue</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Company Name */}
               <input
@@ -151,11 +168,11 @@ function CatalogButton() {
               <button
                 type="submit"
                 className={`w-full py-3 rounded-md font-semibold text-lg transition cursor-pointer ${
-                  isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-orange-600 text-white hover:bg-orange-500'
+                  isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-orange-600 text-white hover:bg-orange-500"
                 }`}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Submitting...' : 'Submit and Download'}
+                {isSubmitting ? "Submitting..." : "Submit Request"}
               </button>
             </form>
           </div>
