@@ -16,7 +16,7 @@ import Story from "./components/Story"
 import Slider from "./components/Slider";
 import Customization from "./components/Customization";
 import FloatBtn from "./components/FloatBtn";
-
+import { Helmet } from "react-helmet-async";
 
 const App = () => {
   const [showBanner, setShowBanner] = useState(true); // Controls banner visibility
@@ -27,6 +27,21 @@ const App = () => {
       {showBanner && <Banner onClose={() => {
         setShowBanner(false);
       }} />}
+      <Helmet>
+        {/* Global SEO metadata */}
+        <title>Wholesale Handmade Metal Décor, Indian Handicrafts</title>
+        <meta name="description" content="Discover stunning handmade metal décor at wholesale prices. Shop authentic Indian handicrafts and metal decorative items for your business today!" />
+        <meta name="keywords" content="Metal decorative items, handicraft products, handcrafted products, Best handicraft metal home decor wholesale, Wholesale handmade products, Handicrafts wholesale online in India" />
+        <meta name="author" content="Your Name" />
+        <meta name="robots" content="index, follow" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="My Website - React App" />
+        <meta property="og:description" content="My awesome React website built for learning SEO" />
+        <meta property="og:image" content="https://example.com/og-image.jpg" />
+        <meta property="og:url" content="https://example.com" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <FloatBtn />
       <Header />
       <Video />
