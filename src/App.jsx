@@ -32,7 +32,7 @@ const App = () => {
         <title>Wholesale Handmade Metal Décor, Indian Handicrafts</title>
         <meta name="description" content="Discover stunning handmade metal décor at wholesale prices. Shop authentic Indian handicrafts and metal decorative items for your business today!" />
         <meta name="keywords" content="Metal decorative items, handicraft products, handcrafted products, Best handicraft metal home decor wholesale, Wholesale handmade products, Handicrafts wholesale online in India" />
-        <meta name="author" content="Your Name" />
+        <meta name="author" content="Tabrez Mirza" />
         <meta name="robots" content="index, follow" />
 
         {/* Open Graph */}
