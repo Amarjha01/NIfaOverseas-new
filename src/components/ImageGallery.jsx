@@ -73,8 +73,8 @@ const ImageGallery = () => {
           <img
             key={index}
             ref={(el) => (desktopImageRefs.current[index] = el)}
-            src={img}
-            alt={`Image ${index + 1}`}
+            src={img.img}
+            alt={img.alt}
             loading="lazy"
             className="hidden lg:block w-full drop-shadow-lg object-cover rounded-lg shadow-lg aspect-square cursor-pointer"
           />
@@ -83,8 +83,8 @@ const ImageGallery = () => {
           <img
             key={index}
             ref={(el) => (mobileImageRefs.current[index] = el)}
-            src={img}
-            alt={`Image ${index + 1}`}
+            src={img.img}
+            alt={img.alt}
             loading="lazy"
             className="lg:hidden block w-full drop-shadow-lg object-cover rounded-lg shadow-lg aspect-square cursor-pointer"
           />
