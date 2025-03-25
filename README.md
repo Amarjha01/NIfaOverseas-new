@@ -1,4 +1,5 @@
 
+![Screenshot 2025-03-25 113621](https://github.com/user-attachments/assets/ce88fcd7-84a3-433a-99fc-f336451438ab)
 # 🧶 Nifa Overseas — Handicraft Store Website
 
 A visually captivating and responsive **handicraft item website** for **Nifa Overseas**, showcasing elegant handmade products using smooth animations and modern UI. Built with **ReactJS**, **Tailwind CSS**, and animation libraries like **GSAP** and **Framer Motion**, it offers a dynamic browsing experience for customers who value creativity and craft.
