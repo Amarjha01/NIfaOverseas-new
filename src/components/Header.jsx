@@ -2,8 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import "./components.css";
 import iso from '../assets/iso9001.png'
 import "./components.css";
-const MENU_ITEMS = ["Home", "Statistics", "About Us", "Gallery", "Contact Us","Catalogue"];
-const MOBILE_MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us","Catalogue"];
+import { Link } from "react-router-dom";
+
+const MENU_ITEMS = ["Home", "Statistics", "About Us", "Gallery", "Contact Us", "Catalogue", "Blog"];
+const MOBILE_MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us", "Catalogue", "Blog"];
 
 const Header = () => {
   const headerRef1 = useRef();
@@ -33,10 +35,14 @@ const Header = () => {
   const handleMenuClick = (item) => {
     setActiveComponent(item);
     setIsToggleOpen(false); // Close the menu when an item is clicked
-    handleScrollToSection(item);
+
+    // Only scroll to section if not Blog
+    if (item !== "Blog") {
+      handleScrollToSection(item);
+    }
   };
 
-  const handleScroll = (id) => {
+  const handleScrollToSection = (id) => {
     const targetElement = document.getElementById(id);
     if (targetElement) {
       const offset = 60; // Adjust this value as needed
@@ -50,8 +56,6 @@ const Header = () => {
       });
     }
   };
-
-
 
   return (
     <header
@@ -101,12 +105,8 @@ const Header = () => {
                 className="h-5 lg:h-8 cursor-pointer"
               />
             </div>
-       </div>
-         
+          </div>
 
-
-         
-          
           <div className=" flex space-x-3 text-lg grow justify-end items-center   ">
             <div className="w-64 h-10 hidden md:flex justify-center items-center text-gray-700 font-semibold rounded-full transition-transform duration-300 ease-in-out transform cursor-pointer hover:scale-105 focus:outline-none">
               <button
@@ -125,9 +125,9 @@ const Header = () => {
                 <a href="#Contact Us" className="relative z-10">enquire Now</a>
               </button>
             </div>
-
           </div>
         </div>
+
         {/* part 2 desktop navbar */}
         <nav
           ref={headerRef2}
@@ -149,22 +149,26 @@ const Header = () => {
                 } cursor-pointer`}
                 onClick={() => handleMenuClick(item)}
               >
-                <a
-                  href={`#${item} `}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleScroll(item);
-                  }}
-                  className="block"
-                >
-                  {item}
-                </a>
+                {item === "Blog" ? (
+                  <Link to="/blog" className="block">{item}</Link>
+                ) : (
+                  <a
+                    href={`#${item}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScrollToSection(item);
+                    }}
+                    className="block"
+                  >
+                    {item}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
         </nav>
 
-        {/* part2 Mobile navbar  */}
+        {/* part 2 Mobile navbar */}
         <nav
           ref={headerRef2}
           className={`md:hidden flex justify-center w-full backdrop-blur-xl ${
@@ -185,16 +189,20 @@ const Header = () => {
                 } cursor-pointer`}
                 onClick={() => handleMenuClick(item)}
               >
-                <a
-                  href={`#${item} `}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleScroll(item);
-                  }}
-                  className="block"
-                >
-                  {item}
-                </a>
+                {item === "Blog" ? (
+                  <Link to="/blog" className="block">{item}</Link>
+                ) : (
+                  <a
+                    href={`#${item}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleScrollToSection(item);
+                    }}
+                    className="block"
+                  >
+                    {item}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
