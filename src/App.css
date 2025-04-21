@@ -43,3 +43,7 @@ html{
 .stardom{
   font-family: stardom ;
 }
+.roboto {
+  font-family: "Roboto Serif", serif;
+  font-optical-sizing: auto;
+}
