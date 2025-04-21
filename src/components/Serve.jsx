@@ -110,7 +110,7 @@ const Serve = () => {
       </p>
 
       {/* Grid for Desktop */}
-      <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 px-6 mt-6">
+      {/* <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 px-6 mt-6">
         {sections.map((section, index) => (
           <div key={index} className="bg-gray-100 p-6 rounded-lg shadow-lg">
             <h3 className="lg:text-2xl text-lg font-bold flex justify-center items-center gap-2">
@@ -127,16 +127,16 @@ const Serve = () => {
             </ul>
           </div>
         ))}
-      </div>
+      </div> */}
 
      
     </div>
      {/* Scrollable Cards for Mobile */}
-     <div className="w-full md:hidden flex overflow-x-scroll space-x-4 px-4 py-2 scrollbar-hide">
+     <div className="w-full flex overflow-x-scroll space-x-4 px-4 py-2 scrollbar-hide md:px-10">
   {sections.map((section, index) => (
     <div
       key={index}
-      className="min-w-96 h-auto bg-gray-100 p-6 rounded-lg shadow-lg "
+      className="min-w-80 h-auto bg-gray-100 p-6 rounded-lg shadow-lg "
     >
       <h3 className="text-lg font-bold flex justify-center items-center gap-2">
         <GoGoal className="text-amber-600" />

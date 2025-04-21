@@ -17,6 +17,7 @@ import Slider from "./components/Slider";
 import Customization from "./components/Customization";
 import FloatBtn from "./components/FloatBtn";
 import { Helmet } from "react-helmet-async";
+import Question from "./components/Question";
 
 const App = () => {
   const [showBanner, setShowBanner] = useState(true); // Controls banner visibility
@@ -57,6 +58,7 @@ const App = () => {
       <Category />
       <Slider />
       <Customization />
+      <Question />
       <Choose />
       <Serve />
       <Catalogue />

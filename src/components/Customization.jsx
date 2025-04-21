@@ -48,15 +48,15 @@ import { IoIosArrowUp } from "react-icons/io";const Customization = () => {
     {
       img: "https://res.cloudinary.com/dbnticsz8/image/upload/v1742017351/febTech/Nifa/laftbv4xvp6zhbmk3c9z.webp",
     },
-    {
-      img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023895/Nifa%20Overseas/dhwol2hwkufion0ztuel.webp",
-    },
-    {
-      img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023893/Nifa%20Overseas/nopykglabt9ooa8cewk7.webp",
-    },
-    {
-      img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023892/Nifa%20Overseas/c0gbgizwdnu7jhkxa90w.webp",
-    },
+    // {
+    //   img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023895/Nifa%20Overseas/dhwol2hwkufion0ztuel.webp",
+    // },
+    // {
+    //   img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023893/Nifa%20Overseas/nopykglabt9ooa8cewk7.webp",
+    // },
+    // {
+    //   img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023892/Nifa%20Overseas/c0gbgizwdnu7jhkxa90w.webp",
+    // },
     {
       img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023892/Nifa%20Overseas/pv6gsgakj5ctk7luwvkg.webp",
     },

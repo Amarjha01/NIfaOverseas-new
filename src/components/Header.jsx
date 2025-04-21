@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "./components.css";
 import iso from '../assets/iso9001.png'
 import "./components.css";
-const MENU_ITEMS = ["Home", "Statistics", "About Us", "Gallery", "Contact Us","Catalogue"];
+const MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us","Catalogue"];
 const MOBILE_MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us","Catalogue"];
 
 const Header = () => {
@@ -117,14 +117,14 @@ const Header = () => {
               </button>
             </div>
 
-            <div className="w-40 h-10 hidden md:flex justify-center items-center text-gray-700 font-semibold rounded-full transition-transform duration-300 ease-in-out transform cursor-pointer border border-orange-400 hover:scale-105 focus:outline-none">
+            {/* <div className="w-40 h-10 hidden md:flex justify-center items-center text-gray-700 font-semibold rounded-full transition-transform duration-300 ease-in-out transform cursor-pointer border border-orange-400 hover:scale-105 focus:outline-none">
               <button
                 className="relative overflow-hidden px-6 py-2 text-lg md:text-sm uppercase rounded-full transition-all duration-300 ease-in-out bg-white text-gray-700 hover:bg-orange-400 hover:text-white active:bg-orange-500 focus:ring-4 focus:ring-orange-300 animate-pulseBg"
                 aria-label="enquire Now"
               >
                 <a href="#Contact Us" className="relative z-10">enquire Now</a>
               </button>
-            </div>
+            </div> */}
 
           </div>
         </div>

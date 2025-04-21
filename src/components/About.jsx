@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 const NewAbout = () => {
@@ -16,8 +16,8 @@ const NewAbout = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top 80%", // Starts animation when 80% of the section is in view
-        toggleActions: "play none none none", // Runs once when in view
+        start: "top 80%",
+        toggleActions: "play none none none",
       },
     });
 
@@ -32,8 +32,38 @@ const NewAbout = () => {
       );
   }, []);
 
+  // ✅ JSON-LD structured data for SEO
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Nifa Overseas",
+    "url": "https://nifaoverseas.com/",
+    "logo": "https://res.cloudinary.com/dbnticsz8/image/upload/v1741778744/febTech/Nifa/jvxkmr90yb6zy5yfxjpw.png",
+    "description": "Nifa Overseas is a leading manufacturer and exporter of handcrafted metal bells and home décor pieces, blending heritage and sustainability since 2020.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Your Street Address",
+      "addressLocality": "City",
+      "addressRegion": "State",
+      "postalCode": "Zip Code",
+      "addressCountry": "India"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-XXXXXXXXXX",
+      "contactType": "customer service"
+    },
+    "foundingDate": "2020",
+
+  };
+
   return (
     <div ref={sectionRef} id="About Us" className="flex flex-col w-full px-4 pt-12">
+      {/* Helmet for structured data */}
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
+
       <div className="relative flex w-full py-10">
         <div className="w-[45%] flex flex-col md:w-[40%]">
           <div className="w-full flex justify-center">
@@ -45,12 +75,8 @@ const NewAbout = () => {
             />
           </div>
           <div>
-            <h2
-              ref={headingRef}
-              className="text-center font-bold text-lg lg:text-5xl"
-            >
-              Leading Manufacturer & Exporter of Handmade Metal Bells & Home
-              Décor
+            <h2 ref={headingRef} className="text-center font-bold text-lg lg:text-5xl">
+              Leading Manufacturer & Exporter of Handmade Metal Bells & Home Décor
             </h2>
           </div>
         </div>
