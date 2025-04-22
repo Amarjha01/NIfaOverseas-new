@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion"; // Import framer-motion
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +12,25 @@ const NewAbout = () => {
   const headingRef = useRef(null);
   const imageRef = useRef(null);
   const textRef = useRef(null);
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const images = [
+    "/AboutImgs/1-min.webp",
+    "/AboutImgs/crop.7_11zon.webp",
+    "/AboutImgs/crop.13_11zon.webp",
+    "/AboutImgs/crop.19_11zon.webp",
+  ];
+
+  // Function to cycle images every 5 seconds
+  useEffect(() => {
+    const imageInterval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length); // Cycle through the images
+    }, 5000); // Change image every 5 seconds
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(imageInterval);
+  }, [images.length]);
 
   useEffect(() => {
     const tl = gsap.timeline({
@@ -54,7 +74,6 @@ const NewAbout = () => {
       "contactType": "customer service"
     },
     "foundingDate": "2020",
-
   };
 
   return (
@@ -64,8 +83,8 @@ const NewAbout = () => {
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
-      <div className="relative flex w-full py-10">
-        <div className="w-[45%] flex flex-col md:w-[40%]">
+      <div className="relative flex flex-col lg:flex-row items-center lg:items-start  w-full py-10 ">
+        <div className="w-[45%] flex flex-col md:w-[40%] ">
           <div className="w-full flex justify-center">
             <img
               ref={logoRef}
@@ -80,13 +99,44 @@ const NewAbout = () => {
             </h2>
           </div>
         </div>
-        <img
-          ref={imageRef}
-          src="https://res.cloudinary.com/dbnticsz8/image/upload/v1741779858/febTech/Nifa/cn4u2vcvyez8unfwikde.webp"
-          alt="Bunch of bells"
-          className="h-[25vw] absolute right-2 top-16 md:static"
-        />
+
+        {/* Wrap the image with a motion.div to control the sequence of entering/exiting */}
+        <div className="  h-[10vh] w-[100vw] relative flex justify-center py-5 ">
+        <motion.div
+          key={currentImageIndex}
+          className="absolute top-[10%] md:static"
+          initial={{ opacity: 1, y: 0 }} // Start from normal position
+          animate={{
+            opacity: 0,
+            y: -100, // Move upward and fade out
+            transition: { duration: 1, delay: 5 }, // Delay for 5 seconds before fading out
+          }}
+          exit={{
+            opacity: 0,
+            y: -200, // Move upward and fade out
+            transition: { duration: 1 },
+          }}
+        >
+          <motion.img
+            src={images[currentImageIndex]}
+            alt={`Image ${currentImageIndex + 1}`}
+            className="h-[30vw] "
+            initial={{ opacity: 0, y: 100 }} // Start below the viewport
+            animate={{
+              opacity: 1,
+              y: 0, // Move to normal position
+              transition: { duration: 1 },
+            }}
+            exit={{
+              opacity: 0,
+              y: -100, // Move upward and fade out
+              transition: { duration: 1 },
+            }}
+          />
+        </motion.div>
+        </div>
       </div>
+
       <div ref={textRef} className="px-4 space-y-4 text-sm font-normal md:text-2xl">
         <p>
           Welcome to Nifa Overseas, where we craft exquisite handmade metal

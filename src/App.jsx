@@ -28,7 +28,7 @@ const HomePage = () => {
   const [showBanner, setShowBanner] = useState(true); // Controls banner visibility
 
   return (
-    <div className="flex flex-col items-center overflow-x-hidden scroll-smooth ">
+    <div className="flex flex-col items-center overflow-x-hidden scroll-smooth max-w-[1480px]">
       {showBanner && <Banner onClose={() => setShowBanner(false)} />}
       <Helmet>
         <title>Wholesale Handmade Bells & Décor – Artisan Craftsmanship</title>

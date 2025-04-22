@@ -41,11 +41,11 @@ const ImageGallery = () => {
     if (window.innerWidth < 768) return;
 
     const handleMouseEnter = (img) => {
-      gsap.to(img, { scale: 1.02, duration: 0.3, ease: "power2.out" });
+      gsap.to(img, { scale: 2, duration: 0.3, ease: "power2.out" , zIndex: 60 });
     };
 
     const handleMouseLeave = (img) => {
-      gsap.to(img, { scale: 1, duration: 0.3, ease: "power2.out" });
+      gsap.to(img, { scale: 1, duration: 0.3, ease: "power2.out" , zIndex: 10});
     };
 
     desktopImageRefs.current.forEach((img) => {
