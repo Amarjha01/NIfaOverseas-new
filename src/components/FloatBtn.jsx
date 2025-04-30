@@ -9,13 +9,13 @@ const data = [
 ];
 
 const FloatingItem = ({ icon, content, href }) => (
-  <div className="w-auto h-13 bg-blue-400 flex items-center rounded-bl-[40px] rounded-tl-[40px] hover:-translate-x-[85%] transition duration-500 ease-in-out">
-    <div className="h-13 w-13 rounded-full flex justify-center items-center cursor-pointer ">
-      <div className="  rounded-full  bg-white text-2xl p-2">
+  <div className="w-auto h-10 bg-blue-400 flex items-center rounded-bl-[40px] rounded-tl-[40px] hover:-translate-x-[87%] transition duration-500 ease-in-out">
+    <div className="h-10 w-10 rounded-full flex justify-center items-center cursor-pointer ">
+      <div className="  rounded-full  bg-white text-lg p-1.5">
         {icon}
       </div>
     </div>
-    <a href={href} className="p-2 mr-1 text-xl font-semibold rounded-full bg-white">
+    <a href={href} className="px-2 mr-0.5 text-xl font-semibold rounded-full bg-white">
       {content}
     </a>
   </div>
@@ -31,7 +31,7 @@ const FloatBtn = ({ items = data }) => {
       </div>
 
       {/* Desktop Floating Panel */}
-      <div className="hidden fixed top-[50%] right-0 lg:flex lg:flex-col gap-2 translate-x-[85%] ">
+      <div className="hidden fixed top-[50%] right-0 lg:flex lg:flex-col gap-2 translate-x-[87%] ">
         {items.map((item, index) => (
           <FloatingItem
           

@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import "./components.css";
-import iso from '../assets/iso9001.png'
 import "./components.css";
 import { Link } from "react-router-dom";
 
-const MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us", "Catalogue", "Blog"];
-const MOBILE_MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us", "Catalogue", "Blog"];
+
+const MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us", "Catalogue", "stories"];
+const MOBILE_MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us", "Catalogue", "stories"];
 
 const Header = () => {
   const headerRef1 = useRef();
@@ -36,8 +36,8 @@ const Header = () => {
     setActiveComponent(item);
     setIsToggleOpen(false); // Close the menu when an item is clicked
 
-    // Only scroll to section if not Blog
-    if (item !== "Blog") {
+    // Only scroll to section if not story
+    if (item !== "stories") {
       handleScrollToSection(item);
     }
   };
@@ -74,33 +74,33 @@ const Header = () => {
             <div className="  ">
               <img
                 src="https://res.cloudinary.com/dkdyrgg3q/image/upload/v1741067893/Nifa%20Overseas/ggwlzpvdrfmjeozs28w9.png"
-                alt="Logo"
+                alt="nifa overseas Logo"
                 className="h-32 md:h-40 cursor-pointer bg-amber-30"
               />
            </div>
             <div className=" absolute top-[80%] md:left-10 md:static  flex gap-3 items-center  ">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb5walsWNAAqh12c69MrsDJMmiWhLDsow6gw&s"
+                src="/HeaderLogos/MCA.webp"
                 alt="MCA-Logo"
                 className="h-5 lg:h-8 cursor-pointer"
               />
               <img
-                src="https://ihgfdelhifair.in/assets/img/epch-logo-2024.png"
+                src="/HeaderLogos/epch-logo-2024.webp"
                 alt="EPCH-Logo"
                 className="h-5 lg:h-8 cursor-pointer"
               />
               <img
-                src={iso}
+                src='/HeaderLogos/isoECC.png'
                 alt="ECC-ISO"
                 className="h-5 lg:h-8 cursor-pointer"
               />
               <img
-                src='https://www.bharat-tex.com/wp-content/uploads/2025/01/Bharat-tex-logo.png'
+                src='/HeaderLogos/Bharat-tex-logo.webp'
                 alt="Bharat-tex"
                 className="h-5 lg:h-8 cursor-pointer"
               />
               <img
-                src='https://uploads.ifdesign.de/WdgEvent/946/images/medium/IHGF-fair.jpg'
+                src='/HeaderLogos/IHGF.webp'
                 alt="IHGF"
                 className="h-5 lg:h-8 cursor-pointer"
               />
@@ -149,8 +149,8 @@ const Header = () => {
                 } cursor-pointer`}
                 onClick={() => handleMenuClick(item)}
               >
-                {item === "Blog" ? (
-                  <Link to="/blog" className="block">{item}</Link>
+                {item === "stories" ? (
+                  <Link to="/stories" className="block">{item}</Link>
                 ) : (
                   <a
                     href={`#${item}`}
@@ -189,8 +189,8 @@ const Header = () => {
                 } cursor-pointer`}
                 onClick={() => handleMenuClick(item)}
               >
-                {item === "Blog" ? (
-                  <Link to="/blog" className="block">{item}</Link>
+                {item === "stories" ? (
+                  <Link to="/stories" className="block">{item}</Link>
                 ) : (
                   <a
                     href={`#${item}`}

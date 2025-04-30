@@ -4,7 +4,7 @@ const Banner = ({ onClose }) => {
 
 
   return (
-    <div className="fixed inset-0 w-full h-screen z-50">
+    <div className="fixed inset-0 w-full h-screen z-50 hidden">
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black opacity-65 md:opacity-80 flex justify-center items-center"></div>
 

@@ -14,7 +14,7 @@ import Catalogue from "./components/Catalogue";
 import Serve from "./components/Serve";
 import Choose from "./components/Choose";
 import Category from "./components/Category";
-import Story from "./components/Story";
+import Stories from "./components/Stories.jsx";
 import Slider from "./components/Slider";
 import Customization from "./components/Customization";
 import FloatBtn from "./components/FloatBtn";
@@ -53,10 +53,10 @@ const HomePage = () => {
       <Video />
       <Stats />
       <About />
-      <Story />
+      <Stories />
       <ImageGallery />
       <Category />
-      <Slider />
+      {/* <Slider /> */}
       <Customization />
       <Question />
       <Choose />
@@ -73,7 +73,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/stories" element={<Blog />} />
       </Routes>
     </Router>
   );

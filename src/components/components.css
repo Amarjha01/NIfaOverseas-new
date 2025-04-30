@@ -242,3 +242,12 @@ button {
 button a {
   text-decoration: none;
 }
+
+
+
+/* Add this to your styles for animated elements */
+.animated-element {
+  will-change: transform;
+  -webkit-transform: scale(1); /* Safari fallback */
+  transform: scale(1);
+}

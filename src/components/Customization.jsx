@@ -1,11 +1,15 @@
 import React, { useRef, useState } from "react";
 import { gsap } from "gsap";
-import { IoIosArrowUp } from "react-icons/io";const Customization = () => {
+import { IoIosArrowUp } from "react-icons/io";
+import './components.css'
+const Customization = () => {
   const imageRefs = useRef([]);
   const containerRef = useRef(null); // Reference for the destination div
   const [activeIndex, setActiveIndex] = useState(null); // Track active image
 
-  const handleImageClick = (index) => {
+  const handleImageClick = (index, event) => {
+    event.preventDefault(); // Prevent default touch behavior
+
     if (!containerRef.current || !imageRefs.current[index]) return;
 
     const containerRect = containerRef.current.getBoundingClientRect();
@@ -48,15 +52,6 @@ import { IoIosArrowUp } from "react-icons/io";const Customization = () => {
     {
       img: "https://res.cloudinary.com/dbnticsz8/image/upload/v1742017351/febTech/Nifa/laftbv4xvp6zhbmk3c9z.webp",
     },
-    // {
-    //   img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023895/Nifa%20Overseas/dhwol2hwkufion0ztuel.webp",
-    // },
-    // {
-    //   img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023893/Nifa%20Overseas/nopykglabt9ooa8cewk7.webp",
-    // },
-    // {
-    //   img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023892/Nifa%20Overseas/c0gbgizwdnu7jhkxa90w.webp",
-    // },
     {
       img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023892/Nifa%20Overseas/pv6gsgakj5ctk7luwvkg.webp",
     },
@@ -66,7 +61,6 @@ import { IoIosArrowUp } from "react-icons/io";const Customization = () => {
     {
       img: "https://res.cloudinary.com/dkdyrgg3q/image/upload/v1742023892/Nifa%20Overseas/e9q8lyeecn6ybeqsrpde.webp",
     },
-   
   ];
 
   return (
@@ -101,36 +95,29 @@ import { IoIosArrowUp } from "react-icons/io";const Customization = () => {
         <div className="w-full lg:w-[75%] relative flex flex-col items-center">
           <div
             ref={containerRef}
-            className="absolute h-full w-[100vw] -left-24 lg:left-0 lg:w-[90%] flex items-center justify-center  "
+            className="absolute h-full w-[100vw] -left-24 lg:left-0 lg:w-[90%] flex items-center justify-center"
           >
             {/* Target area where images should move */}
           </div>
 
           {/* Image Grid */}
-          <div className=" w-full ">
-          <div className=" w-full flex justify-end px-5 md:px-4 ">
-          <IoIosArrowUp  className=" text-6xl text-amber-600"/>
-          </div>
-          <div className="flex flex-col w-full h-[47vh] lg:h-[40vh] items-end relative gap-3 overflow-scroll pr-1.5 ">
-       
-            {Products.map((item, index) => (
-              <div
-                key={index}
-                className="relative  border border-amber-500 p-1 rounded-2xl lg:w-[4vw] w-[20vw]" //lg:h-[6vw]
-              >
-                <img
-                  ref={(el) => (imageRefs.current[index] = el)}
-                  src={item.img}
-                  alt="Product"
-                  className="w-auto cursor-pointer h-full rounded-xl"
-                  onClick={() => handleImageClick(index)} // Click event
-                />
-              </div>
-            ))}
-          </div>
-          <div className=" w-full flex justify-end px-5 md:px-3 ">
-          <IoIosArrowUp  className=" text-6xl text-amber-600 rotate-180"/>
-          </div>
+          <div className="w-full">
+            <div className="flex flex-col w-full h-[47vh] lg:h-[45vh] items-end relative gap-3 overflow-scroll pr-1.5">
+              {Products.map((item, index) => (
+                <div
+                  key={index}
+                  className="relative border border-amber-500 p-1 rounded-2xl lg:w-[4vw] w-[20vw]"
+                >
+                  <img
+                    ref={(el) => (imageRefs.current[index] = el)}
+                    src={item.img}
+                    alt="Product"
+                    className="w-auto cursor-pointer h-full rounded-xl"
+                    onClick={(event) => handleImageClick(index, event)} // Click event
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
