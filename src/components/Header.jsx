@@ -4,8 +4,8 @@ import "./components.css";
 import { Link } from "react-router-dom";
 
 
-const MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us", "Catalogue", "stories"];
-const MOBILE_MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us", "Catalogue", "stories"];
+const MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us", "Catalogue", "Stories"];
+const MOBILE_MENU_ITEMS = ["Home", "About Us", "Gallery", "Contact Us", "Catalogue", "Stories"];
 
 const Header = () => {
   const headerRef1 = useRef();
@@ -37,7 +37,7 @@ const Header = () => {
     setIsToggleOpen(false); // Close the menu when an item is clicked
 
     // Only scroll to section if not story
-    if (item !== "stories") {
+    if (item !== "Stories") {
       handleScrollToSection(item);
     }
   };
@@ -149,8 +149,8 @@ const Header = () => {
                 } cursor-pointer`}
                 onClick={() => handleMenuClick(item)}
               >
-                {item === "stories" ? (
-                  <Link to="/stories" className="block">{item}</Link>
+                {item === "Stories" ? (
+                  <Link to="/Stories" className="block">{item}</Link>
                 ) : (
                   <a
                     href={`#${item}`}
